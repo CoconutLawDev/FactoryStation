@@ -22,12 +22,24 @@ jobs:
       - name: Build
         run: dotnet build -c Release -p:TreatWarningsAsErrors=false
 
-      - name: Prepare release
+      - name: Debug - show bin structure
         run: |
-          PUBLISH_DIR=$(find bin/Content.Server -name "publish" -type d | head -1)
-          echo "Found: $PUBLISH_DIR"
+          find bin -type f -name "*.dll" -o -name "Robust.Server" -o -name "*.json" | head -50
+          echo "---"
+          ls -la bin/Content.Server/
+          echo "---"
+          ls -la bin/Content.Server/net9.0/ 2>/dev/null || echo "no net9.0"
+
+      - name: Package Server
+        run: |
           mkdir -p release/server
-          cp -r $PUBLISH_DIR/* release/server/
+          cp bin/Content.Server/net9.0/*.dll release/server/ 2>/dev/null || true
+          cp bin/Content.Server/net9.0/*.exe release/server/ 2>/dev/null || true
+          cp bin/Content.Server/net9.0/*.so release/server/ 2>/dev/null || true
+          cp bin/Content.Server/net9.0/*.json release/server/ 2>/dev/null || true
+          cp bin/Content.Server/net9.0/Robust.Server release/server/ 2>/dev/null || true
+          cp -r bin/Content.Server/net9.0/Resources release/server/ 2>/dev/null || true
+          ls -la release/server/
           cd release
           tar -czf ../server.tar.gz server/
           sha256sum ../server.tar.gz > ../server.tar.gz.sha256
