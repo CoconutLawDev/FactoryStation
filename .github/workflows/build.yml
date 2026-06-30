@@ -19,10 +19,10 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
-      - name: Resolve config conflict
+      - name: Fix config conflict
         run: |
-          rm -f RobustToolbox/Robust.Server/server_config.toml
-          rm -f Content.Server/server_config.toml
+          echo "" > RobustToolbox/Robust.Server/server_config.toml
+          echo "" > Content.Server/server_config.toml
 
       - name: Publish Server
         run: dotnet publish Content.Server/Content.Server.csproj -c Release -o publish --self-contained true -p:ErrorOnDuplicatePublishOutputFiles=false
@@ -30,6 +30,7 @@ jobs:
       - name: Package Server
         run: |
           cd publish
+          rm -f server_config.toml
           tar -czf ../server.tar.gz .
           sha256sum ../server.tar.gz > ../server.tar.gz.sha256
           mv ../server.tar.gz ../server.tar.gz.sha256 ..
