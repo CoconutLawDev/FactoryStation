@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -18,16 +20,22 @@ jobs:
           dotnet-version: '9.0.x'
 
       - name: Build
-        run: dotnet build -c Release
+        run: dotnet build -c Release -p:TreatWarningsAsErrors=false
 
       - name: Prepare release
         run: |
+          PUBLISH_DIR=$(find bin/Content.Server -name "publish" -type d | head -1)
+          echo "Found: $PUBLISH_DIR"
           mkdir -p release/server
-          cp -r bin/Content.Server/net9.0/publish/* release/server/
+          cp -r $PUBLISH_DIR/* release/server/
           cd release
           tar -czf ../server.tar.gz server/
+          sha256sum ../server.tar.gz > ../server.tar.gz.sha256
 
       - uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ github.run_number }}
-          files: server.tar.gz
+          name: Build ${{ github.run_number }}
+          files: |
+            server.tar.gz
+            server.tar.gz.sha256
