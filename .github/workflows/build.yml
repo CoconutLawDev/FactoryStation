@@ -19,30 +19,15 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
-      - name: Build
-        run: dotnet build -c Release -p:TreatWarningsAsErrors=false
-
-      - name: Debug - show bin structure
-        run: |
-          find bin -type f -name "*.dll" -o -name "Robust.Server" -o -name "*.json" | head -50
-          echo "---"
-          ls -la bin/Content.Server/
-          echo "---"
-          ls -la bin/Content.Server/net9.0/ 2>/dev/null || echo "no net9.0"
+      - name: Publish Server
+        run: dotnet publish Content.Server/Content.Server.csproj -c Release -o publish --self-contained true
 
       - name: Package Server
         run: |
-          mkdir -p release/server
-          cp bin/Content.Server/net9.0/*.dll release/server/ 2>/dev/null || true
-          cp bin/Content.Server/net9.0/*.exe release/server/ 2>/dev/null || true
-          cp bin/Content.Server/net9.0/*.so release/server/ 2>/dev/null || true
-          cp bin/Content.Server/net9.0/*.json release/server/ 2>/dev/null || true
-          cp bin/Content.Server/net9.0/Robust.Server release/server/ 2>/dev/null || true
-          cp -r bin/Content.Server/net9.0/Resources release/server/ 2>/dev/null || true
-          ls -la release/server/
-          cd release
-          tar -czf ../server.tar.gz server/
+          cd publish
+          tar -czf ../server.tar.gz .
           sha256sum ../server.tar.gz > ../server.tar.gz.sha256
+          mv ../server.tar.gz ../server.tar.gz.sha256 ..
 
       - uses: softprops/action-gh-release@v2
         with:
