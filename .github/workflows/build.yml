@@ -1,0 +1,33 @@
+name: Build Server
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Build
+        run: dotnet build -c Release
+
+      - name: Prepare release
+        run: |
+          mkdir -p release/server
+          cp -r bin/Content.Server/net9.0/publish/* release/server/
+          cd release
+          tar -czf ../server.tar.gz server/
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.run_number }}
+          files: server.tar.gz
