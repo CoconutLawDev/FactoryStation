@@ -40,24 +40,14 @@ jobs:
     - name: Package client
       run: dotnet run --project Content.Packaging client --no-wipe-release
 
-    - name: Show release
+    - name: Prepare release files
       run: |
-        ls -la release/
-        echo "=== DIRS ==="
-        find release -maxdepth 2 -type d
-
-    - name: Archive server
-      run: |
-        cd release
-        tar -czf ../server.tar.gz Server_linux-x64
-
-    - name: Copy ACZ
-      run: |
-        cp release/SS14.Client.zip .
+        cp release/SS14.Server_linux-x64.zip server.zip
+        cp release/SS14.Client.zip SS14.Client.zip
 
     - name: Checksums
       run: |
-        sha256sum server.tar.gz SS14.Client.zip > SHA256SUMS.txt
+        sha256sum server.zip SS14.Client.zip > SHA256SUMS.txt
 
     - name: Release
       uses: softprops/action-gh-release@v2
@@ -65,6 +55,6 @@ jobs:
         tag_name: build-${{ github.run_number }}
         name: Build ${{ github.run_number }}
         files: |
-          server.tar.gz
+          server.zip
           SS14.Client.zip
           SHA256SUMS.txt
