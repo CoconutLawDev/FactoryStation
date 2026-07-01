@@ -40,6 +40,12 @@ jobs:
     - name: Package client
       run: dotnet run --project Content.Packaging client --no-wipe-release
 
+    - name: Show release
+      run: |
+        ls -la release/
+        echo "=== DIRS ==="
+        find release -maxdepth 2 -type d
+
     - name: Archive server
       run: |
         cd release
