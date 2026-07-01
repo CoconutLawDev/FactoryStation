@@ -34,11 +34,8 @@ jobs:
     - name: Build Packaging
       run: dotnet build Content.Packaging --configuration Release --no-restore
 
-    - name: Package server
-      run: dotnet run --project Content.Packaging server --platform linux-x64
-
-    - name: Package client
-      run: dotnet run --project Content.Packaging client --no-wipe-release
+    - name: Package server with Hybrid ACZ
+      run: dotnet run --project Content.Packaging server --hybrid-acz --platform linux-x64
 
     - name: Prepare release files
       run: |
