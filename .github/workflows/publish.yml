@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-
   workflow_dispatch:
 
 permissions:
@@ -12,11 +11,9 @@ permissions:
 
 jobs:
   publish:
-
     runs-on: ubuntu-latest
 
     steps:
-
     - uses: actions/checkout@v4
       with:
         submodules: recursive
@@ -47,6 +44,19 @@ jobs:
           --platform linux-x64 \
           --platform osx-x64 \
           --platform osx-arm64
+
+    - name: Show release directory
+      run: |
+        echo "====== CURRENT DIR ======"
+        pwd
+        echo "====== FILES ======"
+        find . -maxdepth 4 | sort
+        echo "====== RELEASE ======"
+        find release -maxdepth 5 2>/dev/null || true
+        echo "====== BIN ======"
+        find bin -maxdepth 5 2>/dev/null || true
+        echo "====== PUBLISH ======"
+        find publish -maxdepth 5 2>/dev/null || true
 
     - name: Archive server
       run: |
