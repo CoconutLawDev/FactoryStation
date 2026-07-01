@@ -45,86 +45,19 @@ jobs:
           --platform osx-x64 \
           --platform osx-arm64
 
-    - name: Full diagnostics
+    - name: Archive Server
       run: |
-        echo "========================================="
-        echo "=== 1. PWD"
-        echo "========================================="
-        pwd
+        cd RobustToolbox/bin/Server/linux-x64/publish
+        tar -czf /home/runner/work/FactoryStation/FactoryStation/server.tar.gz .
 
-        echo "========================================="
-        echo "=== 2. ROOT LS"
-        echo "========================================="
-        ls -la
-
-        echo "========================================="
-        echo "=== 3. RELEASE CONTENTS"
-        echo "========================================="
-        ls -la release/ 2>/dev/null || echo "NO RELEASE DIR"
-
-        echo "========================================="
-        echo "=== 4. RELEASE TREE (all dirs, depth 5)"
-        echo "========================================="
-        find release -maxdepth 5 -type d 2>/dev/null || echo "NO RELEASE DIR"
-
-        echo "========================================="
-        echo "=== 5. RELEASE FILES (all files)"
-        echo "========================================="
-        find release -type f 2>/dev/null | head -100 || echo "NO FILES"
-
-        echo "========================================="
-        echo "=== 6. BIN STRUCTURE"
-        echo "========================================="
-        find bin -maxdepth 3 -type d 2>/dev/null | sort
-
-        echo "========================================="
-        echo "=== 7. ALL Robust.Server FILES"
-        echo "========================================="
-        find /home/runner -name "Robust.Server" -type f 2>/dev/null
-
-        echo "========================================="
-        echo "=== 8. ALL Content.Client.zip FILES"
-        echo "========================================="
-        find /home/runner -name "Content.Client.zip" -type f 2>/dev/null
-
-        echo "========================================="
-        echo "=== 9. PUBLISH DIR"
-        echo "========================================="
-        find publish -maxdepth 3 -type d 2>/dev/null || echo "NO PUBLISH DIR"
-
-        echo "========================================="
-        echo "=== 10. ROBUSTTOOLBOX BIN"
-        echo "========================================="
-        find RobustToolbox/bin -maxdepth 4 -type d 2>/dev/null | sort
-
-    - name: Archive server
+    - name: Copy Client ACZ
       run: |
-        cd release
-        tar -czf ../server.tar.gz Server
-
-    - name: Archive Windows Client
-      run: |
-        cd release
-        zip -r ../client-win-x64.zip Windows_x64
-
-    - name: Archive Linux Client
-      run: |
-        cd release
-        tar -czf ../client-linux-x64.tar.gz Linux_x64
-
-    - name: Archive macOS Intel
-      run: |
-        cd release
-        zip -r ../client-osx-x64.zip OSX_x64
-
-    - name: Archive macOS Apple Silicon
-      run: |
-        cd release
-        zip -r ../client-osx-arm64.zip OSX_arm64
+        cp release/SS14.Client.zip /home/runner/work/FactoryStation/FactoryStation/
 
     - name: Checksums
       run: |
-        sha256sum *.gz *.zip > SHA256SUMS.txt
+        cd /home/runner/work/FactoryStation/FactoryStation
+        sha256sum server.tar.gz SS14.Client.zip > SHA256SUMS.txt
 
     - name: Release
       uses: softprops/action-gh-release@v2
@@ -133,8 +66,5 @@ jobs:
         name: Build ${{ github.run_number }}
         files: |
           server.tar.gz
-          client-win-x64.zip
-          client-linux-x64.tar.gz
-          client-osx-x64.zip
-          client-osx-arm64.zip
+          SS14.Client.zip
           SHA256SUMS.txt
