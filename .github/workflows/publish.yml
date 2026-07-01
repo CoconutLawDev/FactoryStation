@@ -45,6 +45,19 @@ jobs:
           --platform osx-x64 \
           --platform osx-arm64
 
+    - name: Diagnostics before archive
+      run: |
+        echo "=== PUBLISH CONTENTS ==="
+        ls -la RobustToolbox/bin/Server/linux-x64/publish/ | head -80
+        echo "=== Content DLLs ==="
+        find RobustToolbox/bin/Server -name "Content.Shared.dll" -o -name "Content.Server.dll" | head -10
+        echo "=== All DLLs in Server bin ==="
+        find RobustToolbox/bin/Server -name "*.dll" | head -40
+        echo "=== Resources dir ==="
+        ls -d Resources 2>/dev/null && echo "Resources exists" || echo "No Resources"
+        echo "=== Resources in publish ==="
+        ls -d RobustToolbox/bin/Server/linux-x64/publish/Resources 2>/dev/null && echo "Resources in publish" || echo "No Resources in publish"
+
     - name: Archive Server
       run: |
         # Копируем Resources если их нет в publish
