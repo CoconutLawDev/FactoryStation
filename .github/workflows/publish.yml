@@ -45,18 +45,17 @@ jobs:
           --platform osx-x64 \
           --platform osx-arm64
 
-    - name: Show release directory
+    - name: Find release
       run: |
-        echo "====== CURRENT DIR ======"
-        pwd
-        echo "====== FILES ======"
-        find . -maxdepth 4 | sort
-        echo "====== RELEASE ======"
-        find release -maxdepth 5 2>/dev/null || true
-        echo "====== BIN ======"
-        find bin -maxdepth 5 2>/dev/null || true
-        echo "====== PUBLISH ======"
-        find publish -maxdepth 5 2>/dev/null || true
+        echo "=== ROOT ==="
+        ls -la
+        echo "=== RELEASE ==="
+        find . -path ./release -prune -o -name "release" -type d -print 2>/dev/null
+        find /home/runner -name "release" -type d 2>/dev/null | head -10
+        echo "=== Robust.Server files ==="
+        find /home/runner -name "Robust.Server" -type f 2>/dev/null | head -10
+        echo "=== Content.Client.zip ==="
+        find /home/runner -name "Content.Client.zip" -type f 2>/dev/null | head -10
 
     - name: Archive server
       run: |
