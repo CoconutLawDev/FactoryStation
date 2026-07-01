@@ -49,22 +49,13 @@ jobs:
       run: |
         mkdir -p /tmp/server-package
 
-        # Шаг 1: контентные DLL (Content.Shared.dll, Content.Server.dll)
-        cp RobustToolbox/bin/Server/*.dll /tmp/server-package/ 2>/dev/null || true
-        cp RobustToolbox/bin/Server/*.so /tmp/server-package/ 2>/dev/null || true
-        cp RobustToolbox/bin/Server/*.pdb /tmp/server-package/ 2>/dev/null || true
+        # Копируем всё из bin/Server (рекурсивно)
+        cp -r RobustToolbox/bin/Server/* /tmp/server-package/ 2>/dev/null || true
 
-        # Шаг 2: publish поверх (Robust.Server.dll, Robust.Server, deps.json и т.д.)
-        cp -r RobustToolbox/bin/Server/linux-x64/publish/* /tmp/server-package/
+        # Копируем publish поверх (там свежий Robust.Server.dll)
+        cp -r RobustToolbox/bin/Server/linux-x64/publish/* /tmp/server-package/ 2>/dev/null || true
 
-        # Шаг 3: локализации из bin/Server
-        for dir in cs de es fr it ja ko pl pt-BR ru tr zh-Hans zh-Hant; do
-          if [ -d "RobustToolbox/bin/Server/$dir" ]; then
-            cp -r RobustToolbox/bin/Server/$dir /tmp/server-package/ 2>/dev/null || true
-          fi
-        done
-
-        # Шаг 4: Resources
+        # Копируем Resources
         cp -r Resources /tmp/server-package/
 
         # Упаковка
