@@ -47,6 +47,10 @@ jobs:
 
     - name: Archive Server
       run: |
+        # Копируем Resources если их нет в publish
+        if [ ! -d "RobustToolbox/bin/Server/linux-x64/publish/Resources" ] && [ -d "Resources" ]; then
+          cp -r Resources RobustToolbox/bin/Server/linux-x64/publish/
+        fi
         cd RobustToolbox/bin/Server/linux-x64/publish
         tar -czf /home/runner/work/FactoryStation/FactoryStation/server.tar.gz .
 
