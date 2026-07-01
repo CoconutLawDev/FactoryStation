@@ -45,17 +45,57 @@ jobs:
           --platform osx-x64 \
           --platform osx-arm64
 
-    - name: Find release
+    - name: Full diagnostics
       run: |
-        echo "=== ROOT ==="
+        echo "========================================="
+        echo "=== 1. PWD"
+        echo "========================================="
+        pwd
+
+        echo "========================================="
+        echo "=== 2. ROOT LS"
+        echo "========================================="
         ls -la
-        echo "=== RELEASE ==="
-        find . -path ./release -prune -o -name "release" -type d -print 2>/dev/null
-        find /home/runner -name "release" -type d 2>/dev/null | head -10
-        echo "=== Robust.Server files ==="
-        find /home/runner -name "Robust.Server" -type f 2>/dev/null | head -10
-        echo "=== Content.Client.zip ==="
-        find /home/runner -name "Content.Client.zip" -type f 2>/dev/null | head -10
+
+        echo "========================================="
+        echo "=== 3. RELEASE CONTENTS"
+        echo "========================================="
+        ls -la release/ 2>/dev/null || echo "NO RELEASE DIR"
+
+        echo "========================================="
+        echo "=== 4. RELEASE TREE (all dirs, depth 5)"
+        echo "========================================="
+        find release -maxdepth 5 -type d 2>/dev/null || echo "NO RELEASE DIR"
+
+        echo "========================================="
+        echo "=== 5. RELEASE FILES (all files)"
+        echo "========================================="
+        find release -type f 2>/dev/null | head -100 || echo "NO FILES"
+
+        echo "========================================="
+        echo "=== 6. BIN STRUCTURE"
+        echo "========================================="
+        find bin -maxdepth 3 -type d 2>/dev/null | sort
+
+        echo "========================================="
+        echo "=== 7. ALL Robust.Server FILES"
+        echo "========================================="
+        find /home/runner -name "Robust.Server" -type f 2>/dev/null
+
+        echo "========================================="
+        echo "=== 8. ALL Content.Client.zip FILES"
+        echo "========================================="
+        find /home/runner -name "Content.Client.zip" -type f 2>/dev/null
+
+        echo "========================================="
+        echo "=== 9. PUBLISH DIR"
+        echo "========================================="
+        find publish -maxdepth 3 -type d 2>/dev/null || echo "NO PUBLISH DIR"
+
+        echo "========================================="
+        echo "=== 10. ROBUSTTOOLBOX BIN"
+        echo "========================================="
+        find RobustToolbox/bin -maxdepth 4 -type d 2>/dev/null | sort
 
     - name: Archive server
       run: |
