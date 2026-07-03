@@ -1,0 +1,15 @@
+- type: material
+  id: RawCopperFactory
+  stackEntity: CopperOreFactory1
+  name: materials-raw-copper
+  unit: materials-unit-chunk
+  icon: { sprite: _FactoryStation/Objects/Materials/factory.rsi, state: copper }
+  price: 0.05
+
+- type: material
+  id: RawSandstoneFactory
+  stackEntity: SandstoneOreFactory1
+  name: materials-raw-sandstone
+  unit: materials-unit-chunk
+  icon: { sprite: _FactoryStation/Objects/Materials/factory.rsi, state: sandstone }
+  price: 0.05

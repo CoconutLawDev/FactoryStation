@@ -23,7 +23,6 @@ public sealed partial class LatheSystem : SharedLatheSystem
         if (args.Sprite == null)
             return;
 
-        // Lathe specific stuff
         if (_appearance.TryGetData<bool>(uid, LatheVisuals.IsRunning, out var isRunning, args.Component))
         {
             if (_sprite.LayerMapTryGet((uid, args.Sprite), LatheVisualLayers.IsRunning, out var runningLayer, false) &&

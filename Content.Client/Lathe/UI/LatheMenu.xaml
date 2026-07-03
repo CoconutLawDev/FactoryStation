@@ -73,6 +73,7 @@
             HorizontalExpand="True"
             SeparationOverride="5">
             <BoxContainer Orientation="Vertical" MinHeight="225">
+                <!-- FactoryStation-Edit: Добавлена кнопка Auto -->
                 <BoxContainer
                     Orientation="Horizontal"
                     Align="End"
@@ -82,6 +83,13 @@
                         Text="{Loc 'lathe-menu-server-list'}"
                         TextAlign="Center"
                         Mode="Press">
+                    </Button>
+                    <Button
+                        Name="EternalRecipeButton"
+                        Text="Auto"
+                        TextAlign="Center"
+                        ToggleMode="True"
+                        ToolTip="Toggle eternal recipe mode">
                     </Button>
                 </BoxContainer>
                 <Label Text="{Loc 'lathe-menu-queue-title'}" Margin="5 5 5 5" HorizontalAlignment="Center"/>

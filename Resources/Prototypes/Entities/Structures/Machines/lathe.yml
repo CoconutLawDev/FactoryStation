@@ -54,6 +54,12 @@
   - type: PowerState
     idlePowerDraw: 150
     workingPowerDraw: 1000
+  #FactoryStation-Edit Start
+  - type: AutoCollector
+    interval: 0.5
+    pullForce: 25.0
+    collectionRadius: 0.7
+  #FactoryStation-Edit Stop
 
 # a lathe that can be sped up with space lube / slowed down with glue
 - type: entity

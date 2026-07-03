@@ -1,0 +1,13 @@
+- type: stack
+  parent: BaseMediumStack
+  id: CopperOreFactory
+  name: stack-copper-ore
+  icon: { sprite: /Textures/_FactoryStation/Objects/Materials/factory.rsi, state: copper }
+  spawn: CopperOreFactory1
+
+- type: stack
+  parent: BaseMediumStack
+  id: SandstoneOreFactory
+  name: stack-sandstone-ore
+  icon: { sprite: /Textures/_FactoryStation/Objects/Materials/factory.rsi, state: sandstone }
+  spawn: SandstoneOreFactory1

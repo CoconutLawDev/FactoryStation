@@ -83,7 +83,11 @@ namespace Content.Server.Lathe
             SubscribeLocalEvent<TechnologyDatabaseComponent, LatheGetRecipesEvent>(OnGetRecipes);
             SubscribeLocalEvent<EmagLatheRecipesComponent, LatheGetRecipesEvent>(GetEmagLatheRecipes);
             SubscribeLocalEvent<LatheHeatProducingComponent, LatheStartPrintingEvent>(OnHeatStartPrinting);
+
+            // FactoryStation-Edit: Вечный рецепт
+            SubscribeLocalEvent<LatheComponent, LatheSetEternalRecipeMessage>(OnLatheSetEternalRecipe);
         }
+
         public override void Update(float frameTime)
         {
             var query = EntityQueryEnumerator<LatheProducingComponent, LatheComponent>();
@@ -185,14 +189,22 @@ namespace Content.Server.Lathe
             foreach (var (mat, amount) in GetAdjustedAmount(component, recipe))
                 _materialStorage.TryChangeMaterialAmount(uid, mat, -amount * quantity);
 
+            // FactoryStation-Edit: Создаём батч с учётом EternalMode
+            var newBatch = new LatheRecipeBatch(recipe.ID, 0, quantity)
+            {
+                Eternal = component.EternalMode
+            };
+
             if (component.Queue.Last is { } node && node.ValueRef.Recipe == recipe.ID)
                 node.ValueRef.ItemsRequested += quantity;
             else
-                component.Queue.AddLast(new LatheRecipeBatch(recipe.ID, 0, quantity));
+                component.Queue.AddLast(newBatch);
+            // FactoryStation-Edit-End
 
             return true;
         }
 
+        // FactoryStation-Edit: Вечный рецепт — не удалять батч при Eternal
         public bool TryStartProducing(EntityUid uid, LatheComponent? component = null)
         {
             if (!Resolve(uid, ref component))
@@ -202,8 +214,19 @@ namespace Content.Server.Lathe
 
             var batch = component.Queue.First();
             batch.ItemsPrinted++;
-            if (batch.ItemsPrinted >= batch.ItemsRequested || batch.ItemsPrinted < 0) // Rollover sanity check
+
+            // FactoryStation-Edit-Start: Если вечный — сбрасываем счётчик вместо удаления
+            if (batch.Eternal)
+            {
+                if (batch.ItemsPrinted >= batch.ItemsRequested)
+                    batch.ItemsPrinted = 0;
+            }
+            else if (batch.ItemsPrinted >= batch.ItemsRequested || batch.ItemsPrinted < 0)
+            {
                 component.Queue.RemoveFirst();
+            }
+            // FactoryStation-Edit-End
+
             var recipe = _proto.Index(batch.Recipe);
 
             var time = _reagentSpeed.ApplySpeed(uid, recipe.CompleteTime) * component.TimeMultiplier;
@@ -247,7 +270,6 @@ namespace Content.Server.Lathe
                     var toAdd = new Solution(
                         resultReagents.Select(p => new ReagentQuantity(p.Key.Id, p.Value, null)));
 
-                    // dispense it in the container if we have it and dump it if we don't
                     if (_container.TryGetContainer(uid, slotId, out var container) &&
                         container.ContainedEntities.Count == 1 &&
                         _solution.TryGetFitsInDispenser(container.ContainedEntities.First(), out var solution, out _))
@@ -286,9 +308,6 @@ namespace Content.Server.Lathe
             _uiSys.SetUiState(uid, LatheUiKey.Key, state);
         }
 
-        /// <summary>
-        /// Adds every unlocked recipe from each pack to the recipes list.
-        /// </summary>
         public void AddRecipesFromDynamicPacks(ref LatheGetRecipesEvent args, TechnologyDatabaseComponent database, IEnumerable<ProtoId<LatheRecipePackPrototype>> packs)
         {
             foreach (var id in packs)
@@ -332,10 +351,6 @@ namespace Content.Server.Lathe
             UpdateUserInterfaceState(uid, component);
         }
 
-        /// <summary>
-        /// Initialize the UI and appearance.
-        /// Appearance requires initialization or the layers break
-        /// </summary>
         private void OnMapInit(EntityUid uid, LatheComponent component, MapInitEvent args)
         {
             _appearance.SetData(uid, LatheVisuals.IsInserting, false);
@@ -344,10 +359,6 @@ namespace Content.Server.Lathe
             _materialStorage.UpdateMaterialWhitelist(uid);
         }
 
-        /// <summary>
-        /// Sets the machine sprite to either play the running animation
-        /// or stop.
-        /// </summary>
         private void UpdateRunningAppearance(EntityUid uid, bool isRunning)
         {
             _appearance.SetData(uid, LatheVisuals.IsRunning, isRunning);
@@ -422,10 +433,6 @@ namespace Content.Server.Lathe
             return GetAvailableRecipes(uid, component).Contains(recipe.ID);
         }
 
-        /// <summary>
-        /// Iterator returning adjusted amount of material needed to
-        /// produce a given recipe
-        /// </summary>
         private static IEnumerable<(ProtoId<MaterialPrototype> mat, int amount)> GetAdjustedAmount(LatheComponent lathe, LatheRecipePrototype recipe)
         {
             foreach (var (mat, amount) in recipe.Materials)
@@ -438,10 +445,6 @@ namespace Content.Server.Lathe
             }
         }
 
-        /// <summary>
-        /// Refunds the material cost of the currently running recipe,
-        /// without cancelling production
-        /// </summary>
         private void RefundCurrentRecipe(EntityUid uid, LatheComponent lathe)
         {
             _proto.Resolve(lathe.CurrentRecipe, out var recipe);
@@ -450,10 +453,6 @@ namespace Content.Server.Lathe
                 _materialStorage.TryChangeMaterialAmount(uid, mat, amount);
         }
 
-        /// <summary>
-        /// Refunds the material cost of a given batch,
-        /// without deleting it
-        /// </summary>
         private void RefundBatch(EntityUid uid, LatheComponent lathe, LatheRecipeBatch batch)
         {
             var delta = batch.ItemsRequested - batch.ItemsPrinted;
@@ -473,7 +472,6 @@ namespace Content.Server.Lathe
             {
                 if (component.Queue.Count > 0)
                 {
-                    // Batch abandoned while printing last item, need to create a one-item batch
                     var batch = component.Queue.First();
                     if (batch.Recipe != component.CurrentRecipe)
                     {
@@ -493,6 +491,14 @@ namespace Content.Server.Lathe
             UpdateUserInterfaceState(uid, component);
             UpdateRunningAppearance(uid, false);
         }
+
+        // FactoryStation-Edit-Start: Обработчик вечного рецепта
+        private void OnLatheSetEternalRecipe(EntityUid uid, LatheComponent lathe, LatheSetEternalRecipeMessage msg)
+        {
+            lathe.EternalMode = msg.Eternal;
+            Dirty(uid, lathe);
+        }
+        // FactoryStation-Edit-End
 
         #region UI Messages
 
@@ -516,13 +522,6 @@ namespace Content.Server.Lathe
             UpdateUserInterfaceState(uid, component);
         }
 
-        /// <summary>
-        /// Removes a batch from the batch queue by index.
-        /// If the index given does not exist or is outside of the bounds of the lathe's batch queue, nothing happens.
-        /// </summary>
-        /// <param name="uid">The lathe whose queue is being altered.</param>
-        /// <param name="component"></param>
-        /// <param name="args"></param>
         public void OnLatheDeleteRequestMessage(EntityUid uid, LatheComponent component, ref LatheDeleteRequestMessage args)
         {
             if (args.Index < 0 || args.Index >= component.Queue.Count)
@@ -532,7 +531,7 @@ namespace Content.Server.Lathe
             for (int i = 0; i < args.Index; i++)
                 node = node?.Next;
 
-            if (node == null) // Shouldn't happen with checks above.
+            if (node == null)
                 return;
 
             var batch = node.Value;
@@ -550,7 +549,6 @@ namespace Content.Server.Lathe
             if (args.Change == 0 || args.Index < 0 || args.Index >= component.Queue.Count)
                 return;
 
-            // New index must be within the bounds of the batch.
             var newIndex = args.Index + args.Change;
             if (newIndex < 0 || newIndex >= component.Queue.Count)
                 return;
@@ -559,16 +557,16 @@ namespace Content.Server.Lathe
             for (int i = 0; i < args.Index; i++)
                 node = node?.Next;
 
-            if (node == null) // Something went wrong.
+            if (node == null)
                 return;
 
             if (args.Change > 0)
             {
                 var newRelativeNode = node.Next;
-                for (int i = 1; i < args.Change; i++) // 1-indexed: starting from Next
+                for (int i = 1; i < args.Change; i++)
                     newRelativeNode = newRelativeNode?.Next;
 
-                if (newRelativeNode == null) // Something went wrong.
+                if (newRelativeNode == null)
                     return;
 
                 component.Queue.Remove(node);
@@ -577,10 +575,10 @@ namespace Content.Server.Lathe
             else
             {
                 var newRelativeNode = node.Previous;
-                for (int i = 1; i < -args.Change; i++) // 1-indexed: starting from Previous
+                for (int i = 1; i < -args.Change; i++)
                     newRelativeNode = newRelativeNode?.Previous;
 
-                if (newRelativeNode == null) // Something went wrong.
+                if (newRelativeNode == null)
                     return;
 
                 component.Queue.Remove(node);

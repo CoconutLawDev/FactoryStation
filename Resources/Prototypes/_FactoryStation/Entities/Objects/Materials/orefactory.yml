@@ -1,0 +1,75 @@
+- type: entity
+  abstract: true
+  parent: MaterialBase
+  id: OreBaseFactory
+  description: A piece of unrefined ore.
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Objects/Materials/factory.rsi
+  - type: Item
+    sprite: _FactoryStation/Objects/Materials/factory.rsi
+  - type: Tag
+    tags:
+    - OreFactory
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 20
+        mask:
+          - ItemMask
+        restitution: 0.3
+        friction: 0.2
+
+
+- type: entity
+  parent: OreBaseFactory
+  id: CopperOreFactory
+  name: copper ore
+  suffix: Full
+  components:
+  - type: Stack
+    stackType: CopperOreFactory
+  - type: Sprite
+    state: copper
+  - type: PhysicalComposition
+    materialComposition:
+      RawCopper: 100
+  - type: Item
+    heldPrefix: copperfactory
+
+- type: entity
+  id: CopperOreFactory1
+  parent: CopperOreFactory
+  suffix: Single
+  components:
+    - type: Stack
+      count: 1
+
+
+
+- type: entity
+  parent: OreBaseFactory
+  id: SandstoneOreFactory
+  name: sandstone ore
+  suffix: Full
+  components:
+  - type: Stack
+    stackType: SandstoneOreFactory
+  - type: Sprite
+    state: sandstone
+  - type: PhysicalComposition
+    materialComposition:
+      RawSandstone: 100
+  - type: Item
+    heldPrefix: sandstonefactory
+
+- type: entity
+  id: SandstoneOreFactory1
+  parent: SandstoneOreFactory
+  suffix: Single
+  components:
+    - type: Stack
+      count: 1

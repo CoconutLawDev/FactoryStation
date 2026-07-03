@@ -32,6 +32,10 @@ public sealed partial class LatheMenu : FancyWindow
     public event Action<int>? QueueMoveDownAction;
     public event Action? DeleteFabricatingAction;
 
+    // FactoryStation-Edit-Start: Событие для вечного рецепта
+    public event Action<bool>? EternalRecipeAction;
+    // FactoryStation-Edit-End
+
     public List<ProtoId<LatheRecipePrototype>> Recipes = new();
 
     public List<ProtoId<LatheCategoryPrototype>>? Categories;
@@ -70,6 +74,13 @@ public sealed partial class LatheMenu : FancyWindow
 
         ServerListButton.OnPressed += a => OnServerListButtonPressed?.Invoke(a);
         DeleteFabricating.OnPressed += _ => DeleteFabricatingAction?.Invoke();
+
+        // FactoryStation-Edit-Start: Обработчик кнопки вечного рецепта
+        EternalRecipeButton.OnToggled += args =>
+        {
+            EternalRecipeAction?.Invoke(args.Pressed);
+        };
+        // FactoryStation-Edit-End
     }
 
     public void SetEntity(EntityUid uid)
@@ -85,6 +96,9 @@ public sealed partial class LatheMenu : FancyWindow
             }
 
             AmountLineEdit.SetText(latheComponent.DefaultProductionAmount.ToString());
+
+            // FactoryStation-Edit: Синхронизация кнопки с EternalMode
+            EternalRecipeButton.Pressed = latheComponent.EternalMode;
         }
 
         MaterialsList.SetOwner(Entity);
@@ -191,11 +205,11 @@ public sealed partial class LatheMenu : FancyWindow
             var sheetVolume = _materialStorage.GetSheetVolume(proto);
 
             var unit = Loc.GetString(proto.Unit);
-            var sheets = adjustedAmount / (float) sheetVolume;
+            var sheets = adjustedAmount / (float)sheetVolume;
 
             var availableAmount = _materialStorage.GetMaterialAmount(Entity, id);
             var missingAmount = Math.Max(0, adjustedAmount - availableAmount);
-            var missingSheets = missingAmount / (float) sheetVolume;
+            var missingSheets = missingAmount / (float)sheetVolume;
 
             var name = Loc.GetString(proto.Name);
 

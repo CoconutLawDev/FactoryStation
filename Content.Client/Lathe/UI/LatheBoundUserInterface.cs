@@ -34,6 +34,13 @@ namespace Content.Client.Lathe.UI
             _menu.QueueMoveUpAction += index => SendMessage(new LatheMoveRequestMessage(index, -1));
             _menu.QueueMoveDownAction += index => SendMessage(new LatheMoveRequestMessage(index, 1));
             _menu.DeleteFabricatingAction += () => SendMessage(new LatheAbortFabricationMessage());
+
+            // FactoryStation-Edit-Start: Кнопка вечного рецепта
+            _menu.EternalRecipeAction += eternal =>
+            {
+                SendMessage(new LatheSetEternalRecipeMessage(eternal));
+            };
+            // FactoryStation-Edit-End
         }
 
         protected override void UpdateState(BoundUserInterfaceState state)

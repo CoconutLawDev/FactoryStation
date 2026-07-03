@@ -21,17 +21,10 @@ namespace Content.Shared.Lathe
         /// </summary>
         [DataField]
         public List<ProtoId<LatheRecipePackPrototype>> DynamicPacks = new();
-        // Note that this shouldn't be modified dynamically.
-        // I.e., this + the static recipies should represent all recipies that the lathe can ever make
-        // Otherwise the material arbitrage test and/or LatheSystem.GetAllBaseRecipes needs to be updated
 
         /// <summary>
         /// The lathe's construction queue.
         /// </summary>
-        /// <remarks>
-        /// This is a LinkedList to allow for constant time insertion/deletion (vs a List), and more efficient
-        /// moves (vs a Queue).
-        /// </remarks>
         [DataField]
         public LinkedList<LatheRecipeBatch> Queue = new();
 
@@ -83,6 +76,14 @@ namespace Content.Shared.Lathe
         [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
         public float MaterialUseMultiplier = 1;
         #endregion
+
+        // FactoryStation-Edit-Start: Режим вечных рецептов
+        /// <summary>
+        /// Если true — все новые рецепты автоматически становятся вечными.
+        /// </summary>
+        [DataField, AutoNetworkedField]
+        public bool EternalMode = false;
+        // FactoryStation-Edit-End
     }
 
     public sealed class LatheGetRecipesEvent : EntityEventArgs
@@ -107,6 +108,15 @@ namespace Content.Shared.Lathe
         public ProtoId<LatheRecipePrototype> Recipe;
         public int ItemsPrinted;
         public int ItemsRequested;
+
+        // FactoryStation-Edit-Start: Поле вечного рецепта
+        /// <summary>
+        /// Если true — рецепт никогда не удаляется из очереди.
+        /// После завершения текущего цикла сразу начинает новый.
+        /// </summary>
+        [DataField]
+        public bool Eternal = false;
+        // FactoryStation-Edit-End
 
         public LatheRecipeBatch(ProtoId<LatheRecipePrototype> recipe, int itemsPrinted, int itemsRequested)
         {
