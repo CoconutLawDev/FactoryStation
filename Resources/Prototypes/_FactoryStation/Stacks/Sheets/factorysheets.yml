@@ -1,0 +1,126 @@
+- type: stack
+  parent: BaseSheetStack
+  id: IngotIronSheet
+  name: "железный слиток"
+  icon: { sprite: _FactoryStation/Items/Materials/iron_ingot.rsi, state: icon }
+  spawn: IngotIronSheet1
+  maxCount: 15
+
+- type: stack
+  parent: BaseSheetStack
+  id: OreCopperSheet
+  name: "медная руда"
+  icon: { sprite: _FactoryStation/Objects/Materials/factory.rsi, state: copper }
+  spawn: OreCopperSheet1
+
+- type: stack
+  parent: BaseSheetStack
+  id: IngotCopperSheet
+  name: "медный слиток"
+  icon: { sprite: _FactoryStation/Items/Materials/copper_ingot.rsi, state: icon }
+  spawn: IngotCopperSheet1
+  maxCount: 15
+
+- type: stack
+  parent: BaseSheetStack
+  id: OreSandstoneFactSheet
+  name: "песок"
+  icon: { sprite: _FactoryStation/Items/Materials/sandstone.rsi, state: icon }
+  spawn: OreSandstoneFactSheet1
+  maxCount: 10
+
+- type: stack
+  parent: BaseSheetStack
+  id: ListCopperSheet
+  name: "медный лист"
+  icon: { sprite: _FactoryStation/Items/Materials/copperlist.rsi, state: icon }
+  spawn: ListCopperSheet1
+  maxCount: 30
+
+- type: stack
+  parent: BaseSheetStack
+  id: OreCrystalSheet
+  name: "космический кристалл"
+  icon: { sprite: _FactoryStation/Items/Materials/crystal_ore.rsi, state: icon }
+  spawn: OreCrystalSheet1
+  maxCount: 15
+
+- type: stack
+  parent: BaseSheetStack
+  id: IngotCrystalSheet
+  name: "обработанный кристалл"
+  icon: { sprite: _FactoryStation/Items/Materials/crystal_ingot.rsi, state: icon }
+  spawn: IngotCrystalSheet1
+  maxCount: 20
+
+- type: stack
+  parent: BaseSheetStack
+  id: OreSlimeGreenSheet
+  name: "обработанная зелёная слизь"
+  icon: { sprite: _FactoryStation/Items/Materials/slimesourcegreen.rsi, state: icon }
+  spawn: IngotSlimeGreenSheet1
+  maxCount: 20
+
+- type: stack
+  parent: BaseSheetStack
+  id: OilFactorySheet
+  name: "нефть"
+  icon: { sprite: _FactoryStation/Items/Materials/oilfactory.rsi, state: icon }
+  spawn: OilFactorySheet1
+  maxCount: 1
+
+- type: stack
+  parent: BaseSheetStack
+  id: GasFactorySheet
+  name: "космический газ"
+  icon: { sprite: _FactoryStation/Items/Materials/gasfactory.rsi, state: icon }
+  spawn: GasFactorySheet1
+  maxCount: 1
+
+- type: stack
+  parent: BaseSheetStack
+  id: IngotCoalSheet
+  name: "упакованный уголь"
+  icon: { sprite: _FactoryStation/Items/Materials/coal_ingot.rsi, state: icon }
+  spawn: IngotCoalSheet1
+  maxCount: 30
+
+- type: stack
+  parent: BaseSheetStack
+  id: SlimeGelSheet
+  name: "синтез-гель"
+  icon: { sprite: _FactoryStation/Items/Materials/slimegel.rsi, state: icon }
+  spawn: SlimeGelSheet1
+  maxCount: 15
+
+- type: stack
+  parent: BaseSheetStack
+  id: OreSlimeBlueSheet
+  name: "синяя слизь"
+  icon: { sprite: _FactoryStation/Items/Materials/slimesourceblue.rsi, state: icon }
+  spawn: OreSlimeBlueSheet1
+  maxCount: 20
+
+- type: stack
+  parent: BaseSheetStack
+  id: OreSlimePinkSheet
+  name: "фиолетовая слизь"
+  icon: { sprite: _FactoryStation/Items/Materials/slimesourcepink.rsi, state: icon }
+  spawn: OreSlimePinkSheet1
+  maxCount: 20
+
+- type: stack
+  parent: BaseSheetStack
+  id: WireCopperSheet
+  name: "медная проволока"
+  icon: { sprite: _FactoryStation/Items/Materials/wire.rsi, state: icon }
+  spawn: WireCopperSheet1
+  maxCount: 30
+
+- type: stack
+  parent: BaseSheetStack
+  id: WireGoldSheet
+  name: "золотая проволока"
+  icon: { sprite: _FactoryStation/Items/Materials/wire-gold.rsi, state: icon }
+  spawn: WireGoldSheet1
+  maxCount: 30

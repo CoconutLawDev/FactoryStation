@@ -1,0 +1,135 @@
+# Общий базовый класс для всей руды
+- type: entity
+  abstract: true
+  parent: BaseSheet
+  id: SheetFactoryWireBase
+  description: несколько проволок, используемой в различных производственных процессах.
+  components:
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: GuideHelp
+    guides:
+    - ExpandingRepairingStation
+
+# =============================================================================
+# Проволока
+# =============================================================================
+- type: entity
+  abstract: true
+  parent: SheetFactoryWireBase
+  id: SheetFactoryWireCopperBase
+  description: несколько кусков медной проволоки.
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Items/Materials/wire.rsi
+  - type: Item
+    sprite: _FactoryStation/Items/Materials/wire.rsi
+  - type: Tag
+    tags:
+    - WireCopperFact
+    - RawMaterial
+    - Sheet
+    - Ore
+
+- type: entity
+  parent: SheetFactoryWireCopperBase
+  id: WireCopperSheet
+  name: "медная проволока"
+  suffix: Full
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      WireCopperFact: 100
+  - type: Stack
+    stackType: WireCopperSheet
+    baseLayer: icon
+    layerStates:
+    - icon
+    - icon
+  - type: Sprite
+    state: icon
+    layers:
+    - state: icon
+      map: ["base"]
+  - type: Item
+    heldPrefix: WireCopperSheet
+
+- type: entity
+  parent: WireCopperSheet
+  id: WireCopperSheet10
+  name: "медная проволока"
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: WireCopperSheet
+  id: WireCopperSheet1
+  name: "медная проволока"
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+
+# =============================================================================
+# Золотая Проволока
+# =============================================================================
+- type: entity
+  abstract: true
+  parent: SheetFactoryWireBase
+  id: SheetFactoryWireGoldBase
+  description: несколько кусков улучшенной проволоки.
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Items/Materials/wire-gold.rsi
+  - type: Item
+    sprite: _FactoryStation/Items/Materials/wire-gold.rsi
+  - type: Tag
+    tags:
+    - WireGoldFact
+    - RawMaterial
+    - Sheet
+    - Ore
+
+- type: entity
+  parent: SheetFactoryWireGoldBase
+  id: WireGoldSheet
+  name: "золотая проволока"
+  suffix: Full
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      WireGoldFact: 100
+  - type: Stack
+    stackType: WireGoldSheet
+    baseLayer: icon
+    layerStates:
+    - icon
+    - icon
+  - type: Sprite
+    state: icon
+    layers:
+    - state: icon
+      map: ["base"]
+  - type: Item
+    heldPrefix: WireGoldSheet
+
+- type: entity
+  parent: WireGoldSheet
+  id: WireGoldSheet10
+  name: "золотая проволока"
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: WireGoldSheet
+  id: WireGoldSheet1
+  name: "золотая проволока"
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1

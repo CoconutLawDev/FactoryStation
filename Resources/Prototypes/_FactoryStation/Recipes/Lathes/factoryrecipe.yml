@@ -1,0 +1,198 @@
+#Рецепты для стандартного переработчика
+- type: latheRecipe
+  id: SheetSteelFact
+  name: "выплавка железа"
+  result: IngotIronSheet1
+  completetime: 2
+  materials:
+    RawIron: 200
+    Coal: 30
+
+- type: latheRecipe
+  id: SmeltCopperOre
+  name: "выплавка меди"
+  result: IngotCopperSheet1
+  completetime: 2
+  materials:
+    OreCopperFact: 200
+    Coal: 30
+
+- type: latheRecipe
+  id: SmeltCrystalOre
+  name: "выплавка кристаллов"
+  result: IngotCrystalSheet1
+  completetime: 5
+  materials:
+    OreCrystal: 30
+
+- type: latheRecipePack
+  id: StandartRecipeFactory
+  recipes:
+    - SheetSteelFact
+    - SmeltCopperOre
+    - SmeltCrystalOre
+
+#Рецепты для печи первого уровня
+
+- type: latheRecipe
+  id: SheetSteel2lvl
+  name: "выплавка железа"
+  result: IngotIronSheet1
+  completetime: 1
+  materials:
+    RawIron: 100
+    Coal: 10
+
+- type: latheRecipe
+  id: SmeltCopperOre2lvl
+  name: "выплавка меди"
+  result: IngotCopperSheet1
+  completetime: 1
+  materials:
+    OreCopperFact: 200
+    Coal: 10
+
+- type: latheRecipe
+  id: SmeltCrystalOre2lvl
+  name: "выплавка кристаллов"
+  result: IngotCrystalSheet1
+  completetime: 2
+  materials:
+    OreCrystal: 10
+
+- type: latheRecipePack
+  id: StandartRecipeFactory2lvl
+  recipes:
+    - SheetSteel2lvl
+    - SmeltCopperOre2lvl
+    - SmeltCrystalOre2lvl
+
+#Рецепты для печи второго уровня
+
+- type: latheRecipe
+  id: SheetSteel3lvl
+  name: "выплавка железа"
+  result: IngotIronSheet1
+  completetime: 0
+  materials:
+    RawIron: 100
+
+- type: latheRecipe
+  id: SmeltCopperOre3lvl
+  name: "выплавка меди"
+  result: IngotCopperSheet1
+  completetime: 0
+  materials:
+    OreCopperFact: 200
+
+- type: latheRecipe
+  id: SmeltCrystalOre3lvl
+  name: "выплавка кристаллов"
+  result: IngotCrystalSheet1
+  completetime: 1
+  materials:
+    OreCrystal: 10
+
+- type: latheRecipePack
+  id: StandartRecipeFactory3lvl
+  recipes:
+    - SheetSteel3lvl
+    - SmeltCopperOre3lvl
+    - SmeltCrystalOre3lvl
+
+# ===========================================================
+
+#Первый уровень Лист-Мастера
+- type: latheRecipe
+  id: SmeltsheetifierCopper
+  name: "Создание листов меди"
+  result: ListCopperSheet1
+  completetime: 3
+  materials:
+    IngotCopper: 100
+
+- type: latheRecipe
+  id: SmeltsheetifierIron
+  name: "Создание листов железа"
+  result: SheetSteel1
+  completetime: 3
+  materials:
+    IngotIron: 100
+
+- type: latheRecipePack
+  id: SheetifierRecipe3001
+  recipes:
+    - SmeltsheetifierIron
+    - SmeltsheetifierCopper
+
+#Второй уровень Лист-Мастера
+- type: latheRecipe
+  id: SmeltsheetifierCopper2
+  name: "Создание листов меди"
+  result: ListCopperSheet1
+  completetime: 2
+  materials:
+    IngotCopper: 100
+
+- type: latheRecipe
+  id: SmeltsheetifierIron2
+  name: "Создание листов железа"
+  result: SheetSteel1
+  completetime: 2
+  materials:
+    IngotIron: 100
+
+- type: latheRecipePack
+  id: SheetifierRecipe4001
+  recipes:
+    - SmeltsheetifierIron2
+    - SmeltsheetifierCopper2
+
+#Третий уровень Лист-Мастера
+- type: latheRecipe
+  id: SmeltsheetifierCopper3
+  name: "Создание листов меди"
+  result: ListCopperSheet1
+  completetime: 2
+  materials:
+    IngotCopper: 50
+
+- type: latheRecipe
+  id: SmeltsheetifierIron3
+  name: "Создание листов железа"
+  result: SheetSteel1
+  completetime: 2
+  materials:
+    IngotIron: 50
+
+- type: latheRecipePack
+  id: SheetifierRecipe5001
+  recipes:
+    - SmeltsheetifierIron3
+    - SmeltsheetifierCopper3
+
+# ===========================================================
+
+#Упаковщик
+- type: latheRecipe
+  id: PackCoal
+  name: "Упаковка и обработка угля"
+  result: IngotCoalSheet1
+  completetime: 3
+  materials:
+    OreCoal: 50
+
+- type: latheRecipe
+  id: PackSlimeGreen
+  name: "Упаковка и обработка зеленой слизи"
+  result: SlimeGelSheet1
+  completetime: 3
+  materials:
+    OreSlimeGreen: 500
+    Plastic: 200
+
+- type: latheRecipePack
+  id: PackFactory
+  recipes:
+    - PackCoal
+    - PackSlimeGreen

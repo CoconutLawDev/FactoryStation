@@ -25,7 +25,7 @@
     idleState: icon
     runningState: burning
     staticPacks:
-    - ToolsStatic
+    - SheetifierRecipe3001
   - type: ItemSlots
     slots:
       heat_sink:
@@ -61,7 +61,7 @@
     idleState: icon
     runningState: burning
     staticPacks:
-    - ToolsStatic
+    - SheetifierRecipe4001
   - type: ItemSlots
     slots:
       heat_sink:
@@ -97,7 +97,7 @@
     idleState: icon
     runningState: burning
     staticPacks:
-    - ToolsStatic
+    - SheetifierRecipe5001
   - type: ItemSlots
     slots:
       heat_sink:

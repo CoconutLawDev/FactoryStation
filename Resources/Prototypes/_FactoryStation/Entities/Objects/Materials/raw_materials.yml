@@ -1,0 +1,380 @@
+# Общий базовый класс для всей руды
+- type: entity
+  abstract: true
+  parent: BaseSheet
+  id: SheetFactoryOreBase
+  description: несколько кусков руды, используемой в различных производственных процессах.
+  components:
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: GuideHelp
+    guides:
+    - ExpandingRepairingStation
+
+
+# =============================================================================
+# Медная руда
+# =============================================================================
+- type: entity
+  abstract: true
+  parent: SheetFactoryOreBase
+  id: SheetFactoryOreCopperBase
+  description: несколько кусков медной руды.
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Objects/Materials/factory.rsi
+  - type: Item
+    sprite: _FactoryStation/Objects/Materials/factory.rsi
+  - type: Tag
+    tags:
+    - OreCopperFact
+    - RawMaterial
+    - Sheet
+    - Ore
+
+- type: entity
+  parent: SheetFactoryOreCopperBase
+  id: OreCopperSheet
+  name: "медная руда"
+  suffix: Full
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      OreCopperFact: 100
+  - type: Stack
+    stackType: OreCopperSheet
+    baseLayer: icon
+    layerStates:
+    - icon
+    - icon
+  - type: Sprite
+    state: icon
+    layers:
+    - state: icon
+      map: ["base"]
+  - type: Item
+    heldPrefix: OreCopperSheet
+
+- type: entity
+  parent: OreCopperSheet
+  id: OreCopperSheet10
+  name: "медная руда"
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: OreCopperSheet
+  id: OreCopperSheet1
+  name: "медная руда"
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+# =============================================================================
+# Песок для стекла
+# =============================================================================
+- type: entity
+  abstract: true
+  parent: SheetFactoryOreBase
+  id: SheetFactoryOreSandstoneFactBase
+  description: несколько кусков песчаника.
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Items/Materials/sandstone.rsi
+  - type: Item
+    sprite: _FactoryStation/Items/Materials/sandstone.rsi
+  - type: Tag
+    tags:
+    - OreSandstoneFact
+    - RawMaterial
+    - Sheet
+    - Ore
+
+- type: entity
+  parent: SheetFactoryOreSandstoneFactBase
+  id: OreSandstoneFactSheet
+  name: "песок"
+  suffix: Full
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      SandstoneFact: 100
+  - type: Stack
+    stackType: OreSandstoneFactSheet
+    baseLayer: icon
+    layerStates:
+    - icon
+    - icon
+  - type: Sprite
+    state: icon
+    layers:
+    - state: icon
+      map: ["base"]
+  - type: Item
+    heldPrefix: OreSandstoneFactSheet
+
+- type: entity
+  parent: OreSandstoneFactSheet
+  id: OreSandstoneFactSheet10
+  name: "песок"
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: OreSandstoneFactSheet
+  id: OreSandstoneFactSheet1
+  name: "песок"
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+# =============================================================================
+# Космический кристалл
+# =============================================================================
+- type: entity
+  abstract: true
+  parent: SheetFactoryOreBase
+  id: SheetFactoryOreCrystalBase
+  description: космический кристалл, редкий материал.
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Items/Materials/crystal_ore.rsi
+  - type: Item
+    sprite: _FactoryStation/Items/Materials/crystal_ore.rsi
+  - type: Tag
+    tags:
+    - OreCrystal
+    - RawMaterial
+    - Sheet
+    - Ore
+
+- type: entity
+  parent: SheetFactoryOreCrystalBase
+  id: OreCrystalSheet
+  name: "космический кристалл"
+  suffix: Full
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      OreCrystal: 100
+  - type: Stack
+    stackType: OreCrystalSheet
+    baseLayer: icon
+    layerStates:
+    - icon
+    - icon
+  - type: Sprite
+    state: icon
+    layers:
+    - state: icon
+      map: ["base"]
+  - type: Item
+    heldPrefix: OreCrystalSheet
+
+- type: entity
+  parent: OreCrystalSheet
+  id: OreCrystalSheet10
+  name: "космический кристалл"
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: OreCrystalSheet
+  id: OreCrystalSheet1
+  name: "космический кристалл"
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+# =============================================================================
+# Зелёная слизь
+# =============================================================================
+- type: entity
+  abstract: true
+  parent: SheetFactoryOreBase
+  id: SheetFactoryOreSlimeGreenBase
+  description: зелёная слизь, редкий материал.
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Items/Materials/slimesourcegreen.rsi
+  - type: Item
+    sprite: _FactoryStation/Items/Materials/slimesourcegreen.rsi
+  - type: Tag
+    tags:
+    - OreSlimeGreen
+    - RawMaterial
+    - Sheet
+    - Ore
+
+- type: entity
+  parent: SheetFactoryOreSlimeGreenBase
+  id: OreSlimeGreenSheet
+  name: "зелёная слизь"
+  suffix: Full
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      OreSlimeGreen: 100
+  - type: Stack
+    stackType: OreSlimeGreenSheet
+    baseLayer: icon
+    layerStates:
+    - icon
+    - icon
+  - type: Sprite
+    state: icon
+    layers:
+    - state: icon
+      map: ["base"]
+  - type: Item
+    heldPrefix: OreSlimeGreenSheet
+
+- type: entity
+  parent: OreSlimeGreenSheet
+  id: OreSlimeGreenSheet10
+  name: "зелёная слизь"
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: OreSlimeGreenSheet
+  id: OreSlimeGreenSheet1
+  name: "зелёная слизь"
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+
+# =============================================================================
+# Синяя слизь
+# =============================================================================
+- type: entity
+  abstract: true
+  parent: SheetFactoryOreBase
+  id: SheetFactoryOreSlimeBlueBase
+  description: синяя слизь, редкий материал.
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Items/Materials/slimesourceblue.rsi
+  - type: Item
+    sprite: _FactoryStation/Items/Materials/slimesourceblue.rsi
+  - type: Tag
+    tags:
+    - OreSlimeBlue
+    - RawMaterial
+    - Sheet
+    - Ore
+
+- type: entity
+  parent: SheetFactoryOreSlimeBlueBase
+  id: OreSlimeBlueSheet
+  name: "синяя слизь"
+  suffix: Full
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      OreSlimeBlue: 100
+  - type: Stack
+    stackType: OreSlimeBlueSheet
+    baseLayer: icon
+    layerStates:
+    - icon
+    - icon
+  - type: Sprite
+    state: icon
+    layers:
+    - state: icon
+      map: ["base"]
+  - type: Item
+    heldPrefix: OreSlimeBlueSheet
+
+- type: entity
+  parent: OreSlimeBlueSheet
+  id: OreSlimeBlueSheet10
+  name: "синяя слизь"
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: OreSlimeBlueSheet
+  id: OreSlimeBlueSheet1
+  name: "синяя слизь"
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+# =============================================================================
+# Фиолетовая слизь
+# =============================================================================
+- type: entity
+  abstract: true
+  parent: SheetFactoryOreBase
+  id: SheetFactoryOreSlimePinkBase
+  description: фиолетовая слизь, редкий материал.
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Items/Materials/slimesourcepink.rsi
+  - type: Item
+    sprite: _FactoryStation/Items/Materials/slimesourcepink.rsi
+  - type: Tag
+    tags:
+    - OreSlimePink
+    - RawMaterial
+    - Sheet
+    - Ore
+
+- type: entity
+  parent: SheetFactoryOreSlimePinkBase
+  id: OreSlimePinkSheet
+  name: "фиолетовая слизь"
+  suffix: Full
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      OreSlimePink: 100
+  - type: Stack
+    stackType: OreSlimePinkSheet
+    baseLayer: icon
+    layerStates:
+    - icon
+    - icon
+  - type: Sprite
+    state: icon
+    layers:
+    - state: icon
+      map: ["base"]
+  - type: Item
+    heldPrefix: OreSlimePinkSheet
+
+- type: entity
+  parent: OreSlimePinkSheet
+  id: OreSlimePinkSheet10
+  name: "фиолетовая слизь"
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: OreSlimePinkSheet
+  id: OreSlimePinkSheet1
+  name: "фиолетовая слизь"
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1

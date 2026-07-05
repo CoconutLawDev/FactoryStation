@@ -18,13 +18,14 @@
         - Sheet
         - RawMaterial
         - Ingot
+        - Ore
       capacity: 500
   - type: OreSiloClient
   - type: Lathe
     idleState: icon
     runningState: burning
     staticPacks:
-      - ToolsStatic
+      - StandartRecipeFactory2lvl
   - type: ItemSlots
     slots:
       heat_sink:
@@ -38,7 +39,7 @@
   id: Furnace2
   parent: BaseLatheLube
   name: Промышленная печь 2
-  description: "Промышленная печь используется для выплавки руды в слитки."
+  description: "Промышленная печь используется для выплавки руды в слитки. Не требует для работы угля"
   components:
   - type: Sprite
     sprite: _FactoryStation/Machines/smelter2.rsi
@@ -54,13 +55,14 @@
         - Sheet
         - RawMaterial
         - Ingot
+        - Ore
       capacity: 500
   - type: OreSiloClient
   - type: Lathe
     idleState: icon
     runningState: burning
     staticPacks:
-      - ToolsStatic
+      - StandartRecipeFactory3lvl
   - type: ItemSlots
     slots:
       heat_sink:

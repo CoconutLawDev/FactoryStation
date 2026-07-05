@@ -3,7 +3,7 @@
 - type: latheRecipePack
   id: OreSmelting
   recipes:
-  - SheetSteel
+  # - SheetSteel - Переработка получения железных листов
   - SheetGlass1
   - SheetPlasma1
   - SheetUranium1

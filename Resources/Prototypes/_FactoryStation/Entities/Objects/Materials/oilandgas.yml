@@ -1,0 +1,169 @@
+# Нефть
+- type: entity
+  abstract: true
+  parent: BaseSheet
+  id: SheetOilFactoryBase
+  description: несколько бочонков нефти, используемых в различных приложениях на станции.
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Items/Materials/oilfactory.rsi
+  - type: Item
+    sprite: _FactoryStation/Items/Materials/oilfactory.rsi
+  - type: Tag
+    tags:
+    - OilFactory
+    - RawMaterial
+    - Sheet
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: GuideHelp
+    guides:
+    - ExpandingRepairingStation
+
+- type: entity
+  parent: SheetOilFactoryBase
+  id: OilFactorySheet
+  name: "нефть"
+  suffix: Full
+  components:
+  - type: Material
+    removed: true
+  - type: PhysicalComposition
+    materialComposition:
+      OilFactory: 100 # Проблема в том, что руда сразу считается железом ( листами), если пытаться исправить, то печь не будет принимать руду
+  - type: Stack
+    stackType: OilFactorySheet
+    baseLayer: icon
+    layerStates:
+    - icon
+    - icon
+  - type: Sprite
+    state: icon
+    layers:
+    - state: icon
+      map: ["base"]
+  - type: Item
+    heldPrefix: OilFactorySheet
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Iron
+        Quantity: 9
+      - ReagentId: Carbon
+        Quantity: 1
+  - type: Tag
+    tags:
+    - OreIronFact
+    - RawMaterial
+    - Sheet
+    - Ore
+
+- type: entity
+  parent: OilFactorySheet
+  id: OilFactorySheet10
+  name: "нефть"
+  suffix: 10
+  components:
+  - type: Sprite
+    state: icon
+  - type: Stack
+    stackType: OilFactorySheet
+    count: 10
+
+- type: entity
+  parent: OilFactorySheet
+  id: OilFactorySheet1
+  name: "нефть"
+  suffix: Single
+  components:
+  - type: Sprite
+    state: icon
+  - type: Stack
+    stackType: OilFactorySheet
+    count: 1
+
+
+# Газ
+- type: entity
+  abstract: true
+  parent: BaseSheet
+  id: SheetGasFactoryBase
+  description: несколько бочонков космического газа, используемых в различных приложениях на станции.
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Items/Materials/gasfactory.rsi
+  - type: Item
+    sprite: _FactoryStation/Items/Materials/gasfactory.rsi
+  - type: Tag
+    tags:
+    - GasFactory
+    - RawMaterial
+    - Sheet
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: GuideHelp
+    guides:
+    - ExpandingRepairingStation
+
+- type: entity
+  parent: SheetGasFactoryBase
+  id: GasFactorySheet
+  name: "космический газ"
+  suffix: Full
+  components:
+  - type: Material
+    removed: true
+  - type: PhysicalComposition
+    materialComposition:
+      GasFactory: 100 # Проблема в том, что руда сразу считается медью ( листами), если пытаться исправить, то печь не будет принимать руду
+  - type: Stack
+    stackType: GasFactorySheet
+    baseLayer: icon
+    layerStates:
+    - icon
+    - icon
+  - type: Sprite
+    state: icon
+    layers:
+    - state: icon
+      map: ["base"]
+  - type: Item
+    heldPrefix: GasFactorySheet
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Copper
+        Quantity: 9
+      - ReagentId: Carbon
+        Quantity: 1
+  - type: Tag
+    tags:
+    - GasFactory
+    - RawMaterial
+    - Sheet
+    - Ore
+
+- type: entity
+  parent: GasFactorySheet
+  id: GasFactorySheet10
+  name: "космический газ"
+  suffix: 10
+  components:
+  - type: Sprite
+    state: icon
+  - type: Stack
+    stackType: GasFactorySheet
+    count: 10
+
+- type: entity
+  parent: GasFactorySheet
+  id: GasFactorySheet1
+  name: "космический газ"
+  suffix: Single
+  components:
+  - type: Sprite
+    state: icon
+  - type: Stack
+    stackType: GasFactorySheet
+    count: 1
+

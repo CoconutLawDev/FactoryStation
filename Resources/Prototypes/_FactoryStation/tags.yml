@@ -1,2 +1,119 @@
 - type: Tag
   id: OreFactory
+
+- type: Tag
+  id: IngotIron
+
+- type: Tag
+  id: OreIronSheet
+
+- type: Tag
+  id: IngotIronSheet
+
+- type: Tag
+  id: OreCopperSheet
+
+- type: Tag
+  id: IngotCopper
+
+- type: Tag
+  id: OreCopperFact
+
+- type: Tag
+  id: IngotCopperSheet
+
+- type: Tag
+  id: OreSandstoneFactSheet
+
+- type: Tag
+  id: SandstoneFact
+
+- type: Tag
+  id: OreSandstoneFact
+
+- type: Tag
+  id: ListCopperSheet
+
+- type: Tag
+  id: OreCrystalSheet
+
+- type: Tag
+  id: OreCrystal
+
+- type: Tag
+  id: IngotCrystal
+
+- type: Tag
+  id: IngotCrystalSheet
+
+- type: Tag
+  id: OreSlimeGreenSheet
+
+- type: Tag
+  id: OreSlimeGreen
+
+- type: Tag
+  id: OilFactory
+
+- type: Tag
+  id: OilFactorySheet
+
+- type: Tag
+  id: GasFactory
+
+- type: Tag
+  id: GasFactorySheet
+
+- type: Tag
+  id: IngotCoal
+
+- type: Tag
+  id: IngotCoalSheet
+
+- type: Tag
+  id: SlimeGelSheet
+
+- type: Tag
+  id: SlimeGel
+
+- type: Tag
+  id: OreSlimeBlueSheet
+
+- type: Tag
+  id: OreSlimeBlue
+
+- type: Tag
+  id: OreSlimePinkSheet
+
+- type: Tag
+  id: OreSlimePink
+
+- type: Tag
+  id: DrillTile
+
+- type: Tag
+  id: DrillFactoryStation
+
+- type: Tag
+  id: DrillActive
+
+- type: Tag
+  id: WireCopperFact
+
+- type: Tag
+  id: WireCopperSheet
+
+- type: Tag
+  id: WireGoldFact
+
+- type: Tag
+  id: WireGoldSheet
+
+- type: Tag
+  id: CopperList
+
+- type: Tag
+  id: FactoryCircuits
+
+- type: Tag
+  id: BlackOilDrillFactoryStation

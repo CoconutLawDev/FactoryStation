@@ -1,0 +1,49 @@
+- type: latheRecipe
+  id: CableStackApcFactory
+  name: "Создание кабеля"
+  result: CableApcStack1
+  completetime: 1
+  materials:
+    Plastic: 200
+    WireCopperFact: 50
+
+- type: latheRecipe
+  id: CableStackMVFactory
+  name: "Создание кабеля средней мощности"
+  result: CableMVStack1
+  completetime: 1
+  materials:
+    Plastic: 400
+    WireCopperFact: 200
+
+- type: latheRecipe
+  id: CableStackHVFactory
+  name: "Создание кабеля высокой мощности"
+  result: CableHVStack1
+  completetime: 2
+  materials:
+    Plastic: 600
+    WireGoldFact: 200
+
+- type: latheRecipePack
+  id: CableStackApcPackFactory
+  recipes:
+    - CableStackApcFactory
+    - CableStackMVFactory
+    - CableStackHVFactory
+
+- type: latheRecipe
+  id: HeatSinkRecipeFactory
+  name: "Создание радиаторной пластины"
+  result: HeatSinkPlate
+  completetime: 2
+  materials:
+    Steel: 600
+    WireCopperFact: 200
+    Silver: 50
+
+- type: latheRecipePack
+  id: HeatSinkPackFactory
+  recipes:
+    - HeatSinkRecipeFactory
+

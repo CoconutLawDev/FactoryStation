@@ -1,0 +1,389 @@
+# =============================================================================
+# Общий базовый класс для всех слитков
+# =============================================================================
+- type: entity
+  abstract: true
+  parent: BaseSheet
+  id: SheetFactoryIngotBase
+  description: слиток металла, используемый в различных производственных процессах.
+  components:
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: GuideHelp
+    guides:
+    - ExpandingRepairingStation
+  - type: Tag
+    tags:
+    - Ingot
+    - RawMaterial
+    - Sheet
+
+# =============================================================================
+# Общий базовый класс для всех листов
+# =============================================================================
+- type: entity
+  abstract: true
+  parent: BaseSheet
+  id: SheetFactoryListBase
+  description: лист металла, используемый в различных производственных процессах.
+  components:
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: GuideHelp
+    guides:
+    - ExpandingRepairingStation
+  - type: Tag
+    tags:
+    - Sheet
+    - RawMaterial
+
+# =============================================================================
+# Железные слитки
+# =============================================================================
+- type: entity
+  abstract: true
+  parent: SheetFactoryIngotBase
+  id: SheetFactoryIngotIronBase
+  description: железный слиток.
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Items/Materials/iron_ingot.rsi
+  - type: Item
+    sprite: _FactoryStation/Items/Materials/iron_ingot.rsi
+  - type: Tag
+    tags:
+    - IngotIron
+    - Ingot
+
+- type: entity
+  parent: SheetFactoryIngotIronBase
+  id: IngotIronSheet
+  name: "железный слиток"
+  suffix: Full
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      IngotIron: 100
+  - type: Stack
+    stackType: IngotIronSheet
+    baseLayer: icon
+    layerStates:
+    - icon
+    - icon
+  - type: Sprite
+    state: icon
+    layers:
+    - state: icon
+      map: ["base"]
+  - type: Item
+    heldPrefix: IngotIronSheet
+
+- type: entity
+  parent: IngotIronSheet
+  id: IngotIronSheet10
+  name: "железный слиток"
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: IngotIronSheet
+  id: IngotIronSheet1
+  name: "железный слиток"
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+# =============================================================================
+# Медные слитки
+# =============================================================================
+- type: entity
+  abstract: true
+  parent: SheetFactoryIngotBase
+  id: SheetFactoryIngotCopperBase
+  description: медный слиток.
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Items/Materials/copper_ingot.rsi
+  - type: Item
+    sprite: _FactoryStation/Items/Materials/copper_ingot.rsi
+  - type: Tag
+    tags:
+    - IngotCopper
+    - Ingot
+
+- type: entity
+  parent: SheetFactoryIngotCopperBase
+  id: IngotCopperSheet
+  name: "медный слиток"
+  suffix: Full
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      IngotCopper: 100
+  - type: Stack
+    stackType: IngotCopperSheet
+    baseLayer: icon
+    layerStates:
+    - icon
+    - icon
+  - type: Sprite
+    state: icon
+    layers:
+    - state: icon
+      map: ["base"]
+  - type: Item
+    heldPrefix: IngotCopperSheet
+
+- type: entity
+  parent: IngotCopperSheet
+  id: IngotCopperSheet10
+  name: "медный слиток"
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: IngotCopperSheet
+  id: IngotCopperSheet1
+  name: "медный слиток"
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+# =============================================================================
+# Медные листы
+# =============================================================================
+- type: entity
+  abstract: true
+  parent: SheetFactoryListBase
+  id: SheetFactoryCopperListBase
+  description: медный лист.
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Items/Materials/copperlist.rsi
+  - type: Item
+    sprite: _FactoryStation/Items/Materials/copperlist.rsi
+  - type: Tag
+    tags:
+    - CopperList
+    - Sheet
+
+- type: entity
+  parent: SheetFactoryCopperListBase
+  id: ListCopperSheet
+  name: "медный лист"
+  suffix: Full
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      CopperList: 100
+  - type: Stack
+    stackType: ListCopperSheet
+    baseLayer: icon
+    layerStates:
+    - icon
+    - icon
+  - type: Sprite
+    state: icon
+    layers:
+    - state: icon
+      map: ["base"]
+  - type: Item
+    heldPrefix: ListCopperSheet
+
+- type: entity
+  parent: ListCopperSheet
+  id: ListCopperSheet10
+  name: "медный лист"
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: ListCopperSheet
+  id: ListCopperSheet1
+  name: "медный лист"
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+# =============================================================================
+# Обработанные кристаллы
+# =============================================================================
+- type: entity
+  abstract: true
+  parent: SheetFactoryIngotBase
+  id: SheetFactoryIngotCrystalBase
+  description: обработанный космический кристалл.
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Items/Materials/crystal_ingot.rsi
+  - type: Item
+    sprite: _FactoryStation/Items/Materials/crystal_ingot.rsi
+  - type: Tag
+    tags:
+    - IngotCrystal
+
+- type: entity
+  parent: SheetFactoryIngotCrystalBase
+  id: IngotCrystalSheet
+  name: "обработанный кристалл"
+  suffix: Full
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      IngotCrystal: 100
+  - type: Stack
+    stackType: IngotCrystalSheet
+    baseLayer: icon
+    layerStates:
+    - icon
+    - icon
+  - type: Sprite
+    state: icon
+    layers:
+    - state: icon
+      map: ["base"]
+  - type: Item
+    heldPrefix: IngotCrystalSheet
+
+- type: entity
+  parent: IngotCrystalSheet
+  id: IngotCrystalSheet10
+  name: "обработанный кристалл"
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: IngotCrystalSheet
+  id: IngotCrystalSheet1
+  name: "обработанный кристалл"
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+# =============================================================================
+# Упакованный уголь
+# =============================================================================
+- type: entity
+  abstract: true
+  parent: SheetFactoryIngotBase
+  id: SheetFactoryIngotCoalBase
+  description: упакованный уголь.
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Items/Materials/coal_ingot.rsi
+  - type: Item
+    sprite: _FactoryStation/Items/Materials/coal_ingot.rsi
+  - type: Tag
+    tags:
+    - IngotCoal
+
+- type: entity
+  parent: SheetFactoryIngotCoalBase
+  id: IngotCoalSheet
+  name: "упакованный уголь"
+  suffix: Full
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      IngotCoal: 100
+  - type: Stack
+    stackType: IngotCoalSheet
+    baseLayer: icon
+    layerStates:
+    - icon
+    - icon
+  - type: Sprite
+    state: icon
+    layers:
+    - state: icon
+      map: ["base"]
+  - type: Item
+    heldPrefix: IngotCoalSheet
+
+- type: entity
+  parent: IngotCoalSheet
+  id: IngotCoalSheet10
+  name: "упакованный уголь"
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: IngotCoalSheet
+  id: IngotCoalSheet1
+  name: "упакованный уголь"
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+# =============================================================================
+# Синтез-гель
+# =============================================================================
+- type: entity
+  abstract: true
+  parent: SheetFactoryIngotBase
+  id: SheetFactorySlimeGelBase
+  description: синтез-гель.
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Items/Materials/slimegel.rsi
+  - type: Item
+    sprite: _FactoryStation/Items/Materials/slimegel.rsi
+  - type: Tag
+    tags:
+    - SlimeGel
+
+- type: entity
+  parent: SheetFactorySlimeGelBase
+  id: SlimeGelSheet
+  name: "синтез-гель"
+  suffix: Full
+  components:
+  - type: PhysicalComposition
+    materialComposition:
+      SlimeGel: 100
+  - type: Stack
+    stackType: SlimeGelSheet
+    baseLayer: icon
+    layerStates:
+    - icon
+    - icon
+  - type: Sprite
+    state: icon
+    layers:
+    - state: icon
+      map: ["base"]
+  - type: Item
+    heldPrefix: SlimeGelSheet
+
+- type: entity
+  parent: SlimeGelSheet
+  id: SlimeGelSheet10
+  name: "синтез-гель"
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: SlimeGelSheet
+  id: SlimeGelSheet1
+  name: "синтез-гель"
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1

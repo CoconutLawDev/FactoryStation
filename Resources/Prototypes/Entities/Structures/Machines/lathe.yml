@@ -175,6 +175,7 @@
     - ServiceStatic
     - PowerCellsStatic
     - ElectronicsStatic
+    - HeatSinkPackFactory #FactoryStation-Edit
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SecurityAmmoStatic
@@ -235,7 +236,6 @@
     staticPacks:
     - ChemistryStatic
     - SurgeryStatic
-    dynamicPacks:
     - AdvancedTools
     - ScienceEquipment
     - ScienceExplosives
@@ -296,7 +296,6 @@
     - CargoBoardsStatic
     - MedicalBoardsStatic
     - EngineeringBoardsStatic
-    dynamicPacks:
     - EngineeringBoards
     - CargoBoards
     - MedicalBoards
@@ -305,9 +304,8 @@
     - CameraBoards
     - MechBoards
     - ShuttleBoards
-  - type: EmagLatheRecipes
-    emagDynamicPacks:
     - SecurityBoards
+    - FactoryCircuitboardRecipes #FactoryStation-Edit
   - type: MaterialStorage
     whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
@@ -348,7 +346,6 @@
     - RoboticsStatic
     - BorgModulesStatic
     - BorgLimbsStatic
-    dynamicPacks:
     - Robotics
     - BorgModules
     - MechParts
@@ -430,7 +427,6 @@
     - SecurityPracticeStatic
     - SecurityAmmoStatic
     - SecurityWeaponsStatic
-    dynamicPacks:
     - SalvageSecurityBoards
     - SalvageSecurityWeapons
     - SecurityEquipment
@@ -515,7 +511,6 @@
     - MedicalClothingStatic
     - EmptyMedkitsStatic
     - SurgeryStatic
-    dynamicPacks:
     - Chemistry
   - type: Machine
     board: MedicalTechFabCircuitboard
@@ -561,6 +556,7 @@
     - Scarves
     - Carpets
     - Bedsheets
+    - ClothPackFactory #FactoryStation-Edit - получение синтетической ткани
   - type: EmagLatheRecipes
     emagStaticPacks:
     - ClothingCentComm
@@ -648,6 +644,7 @@
       staticPacks:
       - OreSmelting
       - RGlassSmelting
+      - StandartRecipeFactory #FactoryStation-Edit
 
 - type: entity
   parent: OreProcessor

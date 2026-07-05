@@ -1,0 +1,117 @@
+- type: material
+  id: Iron
+  name: iron
+  color: "#b0b0b0"  # светло-серый, как металл
+  price: 0.05        # цена за единицу материала
+
+- type: material
+  id: OreCopperFact
+  stackEntity: OreCopperSheet1
+  name: Медная руда
+  icon: { sprite: _FactoryStation/Objects/Materials/factory.rsi, state: copper }
+  color: "#8B5A2B"
+  price: 0.03
+
+- type: material
+  id: IngotIron
+  stackEntity: IngotIronSheet1
+  name: Железные слитки
+  icon: { sprite: _FactoryStation/Items/Materials/iron_ingot.rsi, state: icon }
+  color: "#B0B0B0"
+  price: 0.10
+
+- type: material
+  id: IngotCopper
+  stackEntity: IngotCopperSheet1
+  name: Медные слитки
+  icon: { sprite: _FactoryStation/Items/Materials/copper_ingot.rsi, state: icon }
+  color: "#D4AF37"
+  price: 0.15
+
+- type: material
+  id: OreCrystal
+  stackEntity: OreCrystalSheet1
+  name: Космические кристаллы
+  icon: { sprite: _FactoryStation/Items/Materials/crystal_ore.rsi, state: icon }
+  color: "#9237d4"
+  price: 0.15
+
+- type: material
+  id: IngotCrystal
+  stackEntity: IngotCrystalSheet1
+  name: Обработанные кристаллы
+  icon: { sprite: _FactoryStation/Items/Materials/crystal_ingot.rsi, state: icon }
+  color: "#ac79d1"
+  price: 0.55
+
+- type: material
+  id: OreSlimeGreen
+  stackEntity: OreSlimeGreenSheet1
+  name: Зелёная слизь
+  icon: { sprite: _FactoryStation/Items/Materials/slimesourcegreen.rsi, state: icon }
+  color: "#79d1b2"
+  price: 0.85
+
+- type: material
+  id: OilFactory
+  stackEntity: OilFactorySheet1
+  name: Нефть
+  icon: { sprite: _FactoryStation/Items/Materials/oilfactory.rsi, state: icon }
+  color: "#79d1b2"
+  price: 0.85
+
+- type: material
+  id: GasFactory
+  stackEntity: GasFactorySheet1
+  name: Космический газ
+  icon: { sprite: _FactoryStation/Items/Materials/gasfactory.rsi, state: icon }
+  color: "#79d1b2"
+  price: 0.85
+
+- type: material
+  id: IngotCoal
+  stackEntity: IngotCoalSheet1
+  name: Упакованный уголь
+  icon: { sprite: _FactoryStation/Items/Materials/coal_ingot.rsi, state: icon }
+  color: "#000000"
+  price: 0.03
+
+- type: material
+  id: SlimeGel
+  stackEntity: SlimeGelSheet1
+  name: Синтез-Гель
+  icon: { sprite: _FactoryStation/Items/Materials/slimegel.rsi, state: icon }
+  color: "#3949c6"
+  price: 0.03
+
+- type: material
+  id: WireCopperFact
+  stackEntity: WireCopperSheet1
+  name: Медная проволока
+  icon: { sprite: _FactoryStation/Items/Materials/wire.rsi, state: icon }
+  color: "#D4AF37"
+  price: 0.03
+
+- type: material
+  id: WireGoldFact
+  stackEntity: WireGoldSheet1
+  name: Золотая проволока
+  icon: { sprite: _FactoryStation/Items/Materials/wire-gold.rsi, state: icon }
+  color: "#D4AF37"
+  price: 0.03
+
+- type: material
+  id: CopperList
+  stackEntity: ListCopperSheet1
+  name: Медные листы
+  icon: { sprite: _FactoryStation/Items/Materials/copperlist.rsi, state: icon }
+  color: "#D4AF37"
+  price: 0.4
+
+- type: material
+  id: SandstoneFact
+  stackEntity: OreSandstoneFactSheet1
+  name: Песок
+  icon: { sprite: _FactoryStation/Objects/Materials/factory.rsi, state: sandstone }
+  color: "#ccbc85"
+  price: 0.15

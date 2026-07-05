@@ -1,7 +1,7 @@
 - type: latheRecipe
   id: SheetSteel
   result: SheetSteel1
-  completetime: 0
+  completetime: 2
   materials:
     RawIron: 100
     Coal: 30
@@ -9,7 +9,7 @@
 - type: latheRecipe
   id: SheetSteel30
   result: SheetSteel
-  completetime: 2
+  completetime: 3
   materials:
     RawIron: 3000
     Coal: 1000
@@ -17,14 +17,14 @@
 - type: latheRecipe
   id: SheetGlass1
   result: SheetGlass1
-  completetime: 0
+  completetime: 2
   materials:
     RawQuartz: 100
 
 - type: latheRecipe
   id: SheetGlass30
   result: SheetGlass
-  completetime: 2
+  completetime: 3
   materials:
     RawQuartz: 3000
 

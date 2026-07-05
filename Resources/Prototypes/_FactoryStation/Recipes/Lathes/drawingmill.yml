@@ -1,0 +1,53 @@
+#Волочильный станок 261
+- type: latheRecipe
+  id: DrawingMillRecipe1
+  name: "Создание медной проволоки"
+  result: WireCopperSheet1
+  completetime: 3
+  materials:
+    IngotCopper: 300
+
+- type: latheRecipe
+  id: DrawingMillRecipe2
+  name: "Создание улучшенной проволоки"
+  result: WireGoldSheet1
+  completetime: 5
+  materials:
+    IngotCopper: 500
+    Gold: 200
+
+- type: latheRecipePack
+  id: DrawingMillPackFactory
+  recipes:
+    - DrawingMillRecipe1
+    - DrawingMillRecipe2
+
+
+
+- type: latheRecipe
+  id: KreningOilRecipe
+  name: "Создание пластика из нефти"
+  result: SheetPlastic1
+  completetime: 5
+  materials:
+    OilFactory: 50
+
+- type: latheRecipePack
+  id: KreningFurnacePack
+  recipes:
+    - KreningOilRecipe
+
+
+- type: latheRecipe
+  id: GlassBlowingRecipe
+  name: "Выплавка стекла из песка"
+  result: SheetGlass1
+  completetime: 3
+  materials:
+    SandstoneFact: 300
+    OreCoal: 100
+
+- type: latheRecipePack
+  id: GlassBlowingFurnacePack
+  recipes:
+    - GlassBlowingRecipe

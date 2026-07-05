@@ -19,10 +19,10 @@
   description: Переправляет ресурсы со станции в Штаб Центрального Командования
   components:
   - type: MachineBoard
-  #  prototype: FactoryGoalPad
+    prototype: FactoryGoalPad
     stackRequirements:
-     Glass: 5
-     Steel: 8
+      Glass: 5
+      Steel: 8
   - type: Sprite
     state: cpu_command
   - type: Construction
