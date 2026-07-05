@@ -33,6 +33,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using Content.Server.FactoryStation.Components;
 
 namespace Content.Server.Lathe
 {
@@ -305,6 +306,15 @@ namespace Content.Server.Lathe
                 producing = node.Value.Recipe;
 
             var state = new LatheUpdateState(GetAvailableRecipes(uid, component), component.Queue.ToArray(), producing);
+
+            // FactoryStation-Edit: Добавляем температуру
+            if (TryComp<FactoryIndustrialHeatComponent>(uid, out var heat))
+            {
+                state.CurrentHeat = heat.CurrentHeat;
+                state.DangerThreshold = heat.DangerThreshold;
+                state.CriticalThreshold = heat.CriticalThreshold;
+            }
+
             _uiSys.SetUiState(uid, LatheUiKey.Key, state);
         }
 

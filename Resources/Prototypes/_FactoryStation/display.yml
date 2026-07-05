@@ -1,0 +1,16 @@
+- type: entity
+  id: FactoryGoalDisplay
+  parent: BaseWallmount
+  name: экран промышленного плана
+  components:
+  - type: Sprite
+    sprite: Structures/Wallmounts/screen.rsi
+    state: screen
+  - type: FactoryGoalDisplay
+  - type: ActivatableUI
+    key: enum.FactoryGoalDisplayUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.FactoryGoalDisplayUiKey.Key:
+        type: FactoryGoalDisplayBoundUserInterface
+  - type: StationMember

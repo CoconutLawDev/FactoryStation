@@ -59,6 +59,33 @@
     interval: 0.5
     pullForce: 25.0
     collectionRadius: 0.7
+  - type: FactoryIndustrialHeat
+    maxHeat: 1500
+    heatPerSecond: 10
+    cooldownPerSecond: 10
+    smokeThreshold: 300
+    dangerThreshold: 700
+    criticalThreshold: 1100
+    smokeInterval: 3
+    runningSound:
+      path: /Audio/Machines/circuitprinter.ogg
+    atmosHeatPerSecond: 25
+    co2PerSecond: 0.25
+    explosionChance: 0.05
+    explosionIntensity: 50
+    explosionSlope: 3
+    explosionMaxTileIntensity: 10
+    damagePerSecondCritical: 15
+    spillageInterval: 5
+    # spillagePrototype: PuddleLube
+    spillageChance: 0.4
+    emitsSparks: true
+    # Включение атмосферного охлаждения
+    ambientCoolingEnabled: true
+    ambientCoolingCoefficient: 0.01   # сильное охлаждение от холодного воздуха
+    roomTemperature: 293.15         # 20°C — выше не охлаждается
+    minAmbientTemperature: 73.15    # -200°C — предел эффективности
+    requireAtmosphereForCooling: true
   #FactoryStation-Edit Stop
 
 # a lathe that can be sped up with space lube / slowed down with glue

@@ -83,6 +83,18 @@ namespace Content.Shared.Lathe
         /// </summary>
         [DataField, AutoNetworkedField]
         public bool EternalMode = false;
+
+        [DataField, AutoNetworkedField]
+        public float CurrentTemperature = 20f;
+
+        [DataField, AutoNetworkedField]
+        public float MaxSafeTemperature = 100f;
+
+        [DataField]
+        public float HeatPerSecond = 2f;
+
+        [DataField]
+        public float CoolPerSecond = 1.5f;
         // FactoryStation-Edit-End
     }
 

@@ -1,0 +1,70 @@
+- type: entity
+  id: Furnace
+  parent: BaseLatheLube
+  name: Промышленная печь
+  description: "Промышленная печь используется для выплавки руды в слитки."
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Machines/smelter.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+  - type: Machine
+    board: FurnaceMachineCircuitboard
+  - type: MaterialStorage
+    whitelist:
+      tags:
+        - Sheet
+        - RawMaterial
+        - Ingot
+      capacity: 500
+  - type: OreSiloClient
+  - type: Lathe
+    idleState: icon
+    runningState: burning
+    staticPacks:
+      - ToolsStatic
+  - type: ItemSlots
+    slots:
+      heat_sink:
+        name: Радиаторная пластина
+        whitelist:
+          components:
+          - HeatSink
+
+
+- type: entity
+  id: Furnace2
+  parent: BaseLatheLube
+  name: Промышленная печь 2
+  description: "Промышленная печь используется для выплавки руды в слитки."
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Machines/smelter2.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+  - type: Machine
+    board: FurnaceMachineCircuitboard2
+  - type: MaterialStorage
+    whitelist:
+      tags:
+        - Sheet
+        - RawMaterial
+        - Ingot
+      capacity: 500
+  - type: OreSiloClient
+  - type: Lathe
+    idleState: icon
+    runningState: burning
+    staticPacks:
+      - ToolsStatic
+  - type: ItemSlots
+    slots:
+      heat_sink:
+        name: Радиаторная пластина
+        whitelist:
+          components:
+          - HeatSink

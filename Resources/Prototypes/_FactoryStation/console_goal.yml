@@ -1,0 +1,22 @@
+- type: entity
+  id: FactoryGoalConsole
+  parent: BaseComputerAiAccess
+  name: консоль промышленного плана
+  components:
+  - type: Sprite
+  - type: Anchorable
+  - type: FactoryGoalConsole
+  - type: AccessReader
+    access:
+    - [ "Captain" ]
+  - type: ActivatableUI
+    key: enum.FactoryGoalConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.FactoryGoalConsoleUiKey.Key:
+        type: FactoryGoalConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: Computer
+    board: FactoryGoalConsoleCircuitboard
+  - type: StationMember

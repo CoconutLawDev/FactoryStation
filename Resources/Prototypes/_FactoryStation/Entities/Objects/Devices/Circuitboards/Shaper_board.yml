@@ -1,0 +1,14 @@
+- type: entity
+  parent: BaseMachineCircuitboard
+  id: ShaperMachineCircuitboard261
+  name: "плата формировщика 261"
+  description: "Печатная плата для формировщика 261."
+  components:
+  - type: MachineBoard
+    prototype: DrawingMill261
+    stackRequirements:
+      Glass: 5
+      Steel: 8
+  - type: Sprite
+    state: engineering  #  спрайт платы
+

@@ -1,0 +1,13 @@
+- type: entity
+  parent: BaseMachineCircuitboard
+  id: PackerMachineCircuitboard711
+  name: "плата упаковщика 711"
+  description: "Печатная плата для упаковщика 711."
+  components:
+  - type: MachineBoard
+    prototype: Packer711
+    stackRequirements:
+      Glass: 5
+      Steel: 8
+  - type: Sprite
+    state: engineering  #  спрайт платы

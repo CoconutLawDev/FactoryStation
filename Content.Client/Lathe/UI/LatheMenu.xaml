@@ -73,7 +73,6 @@
             HorizontalExpand="True"
             SeparationOverride="5">
             <BoxContainer Orientation="Vertical" MinHeight="225">
-                <!-- FactoryStation-Edit: Добавлена кнопка Auto -->
                 <BoxContainer
                     Orientation="Horizontal"
                     Align="End"
@@ -84,6 +83,7 @@
                         TextAlign="Center"
                         Mode="Press">
                     </Button>
+                    <!-- FactoryStation-Edit: Кнопка Auto -->
                     <Button
                         Name="EternalRecipeButton"
                         Text="Auto"
@@ -160,9 +160,13 @@
                     <ui:MaterialStorageControl Name="MaterialsList" SizeFlagsStretchRatio="8"/>
                 </BoxContainer>
             </PanelContainer>
+            <!-- FactoryStation-Edit: Температура снизу -->
+            <BoxContainer Name="HeatInfoContainer" Orientation="Horizontal" Margin="0 4 0 0" Visible="False">
+                <Label Text="Temp:" />
+                <Label Name="TemperatureLabel" Margin="4 0 0 0" Text="20°C" />
+                <Label Name="HeatWarningLabel" Margin="8 0 0 0" Text="" FontColorOverride="#FF4444" Visible="False" />
+            </BoxContainer>
         </BoxContainer>
         </BoxContainer>
-
     </BoxContainer>
-
 </controls:FancyWindow>

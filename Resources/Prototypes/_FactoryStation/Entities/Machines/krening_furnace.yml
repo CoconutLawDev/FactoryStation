@@ -1,0 +1,34 @@
+- type: entity
+  id: KreningFurnace
+  parent: BaseLatheLube
+  name: кренинг печь
+  description: "Промышленная печь используется для выплавки пластика из нефти."
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Machines/krening_furnace.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+  - type: Machine
+    board: FurnaceKreningMachineCircuitboard
+  - type: MaterialStorage
+    whitelist:
+      tags:
+        - Sheet
+        - RawMaterial
+        - Ingot
+      capacity: 500
+  - type: OreSiloClient
+  - type: Lathe
+    idleState: icon
+    runningState: burning
+    staticPacks:
+      - ToolsStatic
+  - type: ItemSlots
+    slots:
+      heat_sink:
+        name: Радиаторная пластина
+        whitelist:
+          components:
+          - HeatSink

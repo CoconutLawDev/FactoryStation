@@ -64,9 +64,9 @@ public sealed partial class IndustrialSpillageSystem : EntitySystem
 
         var neighborOffsets = new Vector2i[]
         {
-            new(-1, -1), new(0, -1), new(1, -1),
-            new(-1,  0),              new(1,  0),
-            new(-1,  1), new(0,  1), new(1,  1)
+        new(-1, -1), new(0, -1), new(1, -1),
+        new(-1,  0),              new(1,  0),
+        new(-1,  1), new(0,  1), new(1,  1)
         };
 
         var validTiles = new List<Vector2i>();
@@ -85,7 +85,8 @@ public sealed partial class IndustrialSpillageSystem : EntitySystem
         var chosenTile = _random.Pick(validTiles);
         var spawnCoords = _mapSystem.GridTileToLocal(gridUid.Value, grid, chosenTile);
 
-        Spawn(heat.SpillagePrototype, spawnCoords);
+        // FactoryStation-Edit: Используем существующий прототип лужи
+        Spawn("Puddle", spawnCoords);
 
         if (heat.EmitsSparks)
         {

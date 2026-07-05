@@ -13,6 +13,11 @@ public sealed class LatheUpdateState : BoundUserInterfaceState
 
     public ProtoId<LatheRecipePrototype>? CurrentlyProducing;
 
+    // FactoryStation-Edit: Температура станка
+    public float CurrentHeat;
+    public float DangerThreshold;
+    public float CriticalThreshold;
+
     public LatheUpdateState(List<ProtoId<LatheRecipePrototype>> recipes, LatheRecipeBatch[] queue, ProtoId<LatheRecipePrototype>? currentlyProducing = null)
     {
         Recipes = recipes;

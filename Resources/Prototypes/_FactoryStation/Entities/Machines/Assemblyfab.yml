@@ -1,0 +1,34 @@
+- type: entity
+  id: AssemblyFab
+  parent: BaseLatheLube
+  name: сборкафаб
+  description: "Промышленная печь используется для выплавки стекла из песка."
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Machines/Assemblyfab.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+  - type: Machine
+    board: AssemblyFabCircuitboard
+  - type: MaterialStorage
+    whitelist:
+      tags:
+        - Sheet
+        - RawMaterial
+        - Ingot
+      capacity: 500
+  - type: OreSiloClient
+  - type: Lathe
+    idleState: icon
+    runningState: burning
+    staticPacks:
+      - ToolsStatic
+  - type: ItemSlots
+    slots:
+      heat_sink:
+        name: Радиаторная пластина
+        whitelist:
+          components:
+          - HeatSink

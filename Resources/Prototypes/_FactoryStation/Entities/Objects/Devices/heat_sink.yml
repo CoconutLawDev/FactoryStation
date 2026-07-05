@@ -1,0 +1,13 @@
+- type: entity
+  id: HeatSinkPlate
+  parent: BaseItem
+  name: радиаторная пластина
+  description: Увеличивает охлаждение станка при установке. Изготовлена из теплоотводящего сплава.
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Items/heatsink.rsi
+    state: icon
+  - type: Item
+    size: Normal
+  - type: HeatSink
+    coolingBonus: 0.5

@@ -1,0 +1,13 @@
+- type: entity
+  parent: BaseMachineCircuitboard
+  id: FurnaceKreningMachineCircuitboard
+  name: "плата кренинг печи"
+  description: "Печатная плата для кренинг печи."
+  components:
+  - type: MachineBoard
+    prototype: KreningFurnace
+    stackRequirements:
+      Glass: 5
+      Steel: 8
+  - type: Sprite
+    state: engineering  #  спрайт платы

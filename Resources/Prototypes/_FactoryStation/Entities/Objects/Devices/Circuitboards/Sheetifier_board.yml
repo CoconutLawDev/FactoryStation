@@ -1,0 +1,41 @@
+- type: entity
+  parent: BaseMachineCircuitboard
+  id: SheetifierMachineCircuitboard3001
+  name: "плата лист-мастера 3001"
+  description: "Печатная плата для лист-мастера 3001."
+  components:
+  - type: MachineBoard
+    prototype: SheetifierFactory3001
+    stackRequirements:
+      Glass: 5
+      Steel: 8
+  - type: Sprite
+    state: engineering  #  спрайт платы
+
+- type: entity
+  parent: BaseMachineCircuitboard
+  id: SheetifierMachineCircuitboard4001
+  name: "плата лист-мастера 4001"
+  description: "Печатная плата для лист-мастера 4001."
+  components:
+  - type: MachineBoard
+    prototype: SheetifierFactory4001
+    stackRequirements:
+      Glass: 5
+      Steel: 8
+  - type: Sprite
+    state: supply  # стандартный спрайт платы
+
+- type: entity
+  parent: BaseMachineCircuitboard
+  id: SheetifierMachineCircuitboard5001
+  name: "плата лист-мастера 5001"
+  description: "Печатная плата для лист-мастера 5001."
+  components:
+  - type: MachineBoard
+    prototype: SheetifierFactory5001
+    stackRequirements:
+      Glass: 8
+      Steel: 5
+  - type: Sprite
+    state: cpu_supply  # стандартный спрайт платы

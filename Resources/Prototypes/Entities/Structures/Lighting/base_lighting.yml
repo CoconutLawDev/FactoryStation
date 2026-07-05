@@ -47,6 +47,16 @@
     fx: EffectRCDDeconstruct2
   - type: Physics
     bodyType: Static
+  #FactoryStation-Edit Start
+  - type: FactoryFlicker
+    minEnergyMultiplier: 0.86
+    maxEnergyMultiplier: 1.0
+    minRadiusMultiplier: 0.93
+    maxRadiusMultiplier: 1.0
+    minFlickerDelay: 0.09
+    maxFlickerDelay: 0.24
+    blackoutChance: 0.0025
+  #FactoryStation-Edit Stop
   - type: Fixtures
     fixtures:
       fix1:
@@ -150,6 +160,16 @@
       types:
         Heat: 2
     popupText: powered-light-component-burn-hand
+  #FactoryStation-Edit Start
+  - type: FactoryFlicker
+    minEnergyMultiplier: 0.86
+    maxEnergyMultiplier: 1.0
+    minRadiusMultiplier: 0.93
+    maxRadiusMultiplier: 1.0
+    minFlickerDelay: 0.09
+    maxFlickerDelay: 0.24
+    blackoutChance: 0.0025
+  #FactoryStation-Edit Stop
 
 #LED lights
 - type: entity
@@ -181,6 +201,16 @@
     energy: 2.5
     softness: 0.9
     color: "#EEEEFF"
+  #FactoryStation-Edit Start
+  - type: FactoryFlicker
+    minEnergyMultiplier: 0.86
+    maxEnergyMultiplier: 1.0
+    minRadiusMultiplier: 0.93
+    maxRadiusMultiplier: 1.0
+    minFlickerDelay: 0.09
+    maxFlickerDelay: 0.24
+    blackoutChance: 0.0025
+  #FactoryStation-Edit Stop
 
 #Exterior lights
 - type: entity
@@ -238,6 +268,16 @@
     energy: 4
     softness: 0.5
     color: "#FFAF38"
+  #FactoryStation-Edit Start
+  - type: FactoryFlicker
+    minEnergyMultiplier: 0.86
+    maxEnergyMultiplier: 1.0
+    minRadiusMultiplier: 0.93
+    maxRadiusMultiplier: 1.0
+    minFlickerDelay: 0.09
+    maxFlickerDelay: 0.24
+    blackoutChance: 0.0025
+  #FactoryStation-Edit Stop
 
 #Small lights
 - type: entity

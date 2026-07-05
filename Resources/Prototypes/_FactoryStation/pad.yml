@@ -1,0 +1,30 @@
+- type: entity
+  id: FactoryGoalPad
+  parent: BaseComputer
+  name: платформа приёма промышленных товаров
+  description: Автоматически принимает ресурсы, необходимые для выполнения текущего промышленного контракта.
+  components:
+  - type: Sprite
+    sprite: Structures/cargo_telepad.rsi
+    drawdepth: HighFloorObjects
+    layers:
+    - state: offline
+      map: [ "enum.CargoTelepadLayers.Base" ]
+    - state: idle
+      map: [ "enum.CargoTelepadLayers.Beam" ]
+      shader: unshaded
+  - type: FactoryGoalPad
+    allowedAlertLevels:
+      - green
+      - blue
+      - yellow
+      - violet
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: StationMember
+  - type: Anchorable
+  - type: Pullable
+  - type: Machine
+    board: FactoryGoalpadCircuitboard

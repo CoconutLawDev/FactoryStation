@@ -1,0 +1,27 @@
+- type: entity
+  parent: BaseMachineCircuitboard
+  id: FurnaceMachineCircuitboard
+  name: "плата промышленной печи"
+  description: "Печатная плата для промышленной печи."
+  components:
+  - type: MachineBoard
+    prototype: Furnace
+    stackRequirements:
+      Glass: 5
+      Steel: 8
+  - type: Sprite
+    state: engineering  #  спрайт платы
+
+- type: entity
+  parent: BaseMachineCircuitboard
+  id: FurnaceMachineCircuitboard2
+  name: "плата промышленной печи 2.0"
+  description: "Печатная плата для промышленной печи 2.0."
+  components:
+  - type: MachineBoard
+    prototype: Furnace2
+    stackRequirements:
+      Glass: 5
+      Steel: 8
+  - type: Sprite
+    state: supply  #  спрайт платы

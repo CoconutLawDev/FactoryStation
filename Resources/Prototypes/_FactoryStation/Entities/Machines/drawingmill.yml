@@ -1,0 +1,35 @@
+- type: entity
+  id: DrawingMill261
+  parent: BaseLatheLube
+  name: Волочильный станок 261
+  description: "Волочильный станок 261 используется для формирования материалов. Он может обрабатывать большие объемы материалов, что делает его незаменимым в производственных процессах."
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Machines/drawing_mill.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+  - type: Machine
+    board: ShaperMachineCircuitboard261
+  - type: MaterialStorage
+    whitelist:
+      tags:
+        - Sheet
+        - RawMaterial
+        - Ingot
+        - IngotCopper
+      capacity: 500
+  - type: OreSiloClient
+  - type: Lathe
+    idleState: icon
+    runningState: burning
+    staticPacks:
+    - ToolsStatic
+  - type: ItemSlots
+    slots:
+      heat_sink:
+        name: Радиаторная пластина
+        whitelist:
+          components:
+          - HeatSink

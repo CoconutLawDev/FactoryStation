@@ -1,0 +1,30 @@
+- type: entity
+  id: FactoryGoalConsoleCircuitboard
+  parent: BaseComputerCircuitboard
+  name: плата консоли промышленного плана
+  description: Содержит программу для выбора производственных целей станции.
+  components:
+  - type: ComputerBoard
+    prototype: FactoryGoalConsole
+    stackRequirements:
+      Glass: 5
+      Steel: 8
+  - type: Sprite
+    state: cpu_command
+
+- type: entity
+  id: FactoryGoalpadCircuitboard
+  parent: BaseComputerCircuitboard
+  name: плата платформы промышленного плана
+  description: Переправляет ресурсы со станции в Штаб Центрального Командования
+  components:
+  - type: MachineBoard
+  #  prototype: FactoryGoalPad
+    stackRequirements:
+     Glass: 5
+     Steel: 8
+  - type: Sprite
+    state: cpu_command
+  - type: Construction
+    graph: Computer
+    node: computer

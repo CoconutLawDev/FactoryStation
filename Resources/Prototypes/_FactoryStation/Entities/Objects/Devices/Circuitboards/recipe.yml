@@ -1,0 +1,171 @@
+# Крафт плат
+- type: latheRecipePack
+  id: FactoryCircuitboardRecipes
+  recipes:
+    - FurnaceMachineCircuitboard2Recipe
+    - FurnaceMachineCircuitboardRecipe
+    - PackerMachineCircuitboard711Recipe
+    - ShaperMachineCircuitboard261Recipe
+    - SheetifierMachineCircuitboard3001Recipe
+    - SheetifierMachineCircuitboard4001Recipe
+    - SheetifierMachineCircuitboard5001Recipe
+    - GlassBlowingFurnaceCircuitboardRecipe
+    - FurnaceKreningMachineCircuitboardRecipe
+    - FactoryGoalConsoleCircuitboardRecipe
+    - FactoryGoalpadCircuitboardRecipe
+    - AssemblyFabCircuitboardRecipe
+
+
+# =============================================================================
+# Рецепты печатных плат (для протолата через пакет FactoryCircuitboardRecipes)
+# =============================================================================
+
+# Плата для промышленной печи
+- type: latheRecipe
+  id: FurnaceMachineCircuitboard2Recipe
+  name: Плата промышленной печи
+  categories:
+  - FactoryCircuits
+  materials:
+    Glass: 1000
+    Gold: 100
+    Steel: 1500
+    CopperList: 500
+  result: FurnaceMachineCircuitboard2
+
+# Плата для промышленной печи (базовая)
+- type: latheRecipe
+  id: FurnaceMachineCircuitboardRecipe
+  name: Плата промышленной печи (базовая)
+  categories:
+  - FactoryCircuits
+  materials:
+    Glass: 800
+    Steel: 1500
+  result: FurnaceMachineCircuitboard
+
+# Плата упаковщика 711
+- type: latheRecipe
+  id: PackerMachineCircuitboard711Recipe
+  name: Плата упаковщика 711
+  categories:
+  - FactoryCircuits
+  materials:
+    Glass: 1500
+    Steel: 2000
+    CopperList: 800
+  result: PackerMachineCircuitboard711
+
+# Плата формирователя 261
+- type: latheRecipe
+  id: ShaperMachineCircuitboard261Recipe
+  name: Плата формирователя 261
+  categories:
+  - FactoryCircuits
+  materials:
+    Glass: 1200
+    Steel: 1800
+    Silver: 300
+    CopperList: 500
+  result: ShaperMachineCircuitboard261
+
+# Плата лист-мастера 3001
+- type: latheRecipe
+  id: SheetifierMachineCircuitboard3001Recipe
+  name: Плата лист-мастера 3001
+  categories:
+  - FactoryCircuits
+  materials:
+    Glass: 800
+    Steel: 1500
+  result: SheetifierMachineCircuitboard3001
+
+# Плата лист-мастера 4001
+- type: latheRecipe
+  id: SheetifierMachineCircuitboard4001Recipe
+  name: Плата лист-мастера 4001
+  categories:
+  - FactoryCircuits
+  materials:
+    Glass: 1000
+    Steel: 2000
+    Silver: 500
+    CopperList: 500
+  result: SheetifierMachineCircuitboard4001
+
+# Плата лист-мастера 5001
+- type: latheRecipe
+  id: SheetifierMachineCircuitboard5001Recipe
+  name: Плата лист-мастера 5001
+  categories:
+  - FactoryCircuits
+  materials:
+    Glass: 1200
+    Steel: 2500
+    Gold: 500
+    Silver: 1000
+    CopperList: 500
+  result: SheetifierMachineCircuitboard5001
+
+- type: latheRecipe
+  id: GlassBlowingFurnaceCircuitboardRecipe
+  name: Плата стеклодувной печи
+  categories:
+  - FactoryCircuits
+  materials:
+    Glass: 1200
+    Steel: 2500
+    Gold: 800
+    Silver: 800
+    CopperList: 500
+  result: GlassBlowingFurnaceCircuitboard
+
+- type: latheRecipe
+  id: FurnaceKreningMachineCircuitboardRecipe
+  name: Плата кренинг печи
+  categories:
+  - FactoryCircuits
+  materials:
+    Glass: 1200
+    Steel: 2500
+    Gold: 800
+    Silver: 800
+    CopperList: 500
+  result: FurnaceKreningMachineCircuitboard
+
+- type: latheRecipe
+  id: FactoryGoalConsoleCircuitboardRecipe
+  name: Плата консоли целей фабрики
+  categories:
+  - FactoryCircuits
+  materials:
+    Glass: 6000
+    Steel: 5000
+    Gold: 800
+    Silver: 800
+    CopperList: 500
+  result: FactoryGoalConsoleCircuitboard
+
+- type: latheRecipe
+  id: FactoryGoalpadCircuitboardRecipe
+  name: Плата платформы промышленных контрактов
+  categories:
+  - FactoryCircuits
+  materials:
+    Glass: 1000
+    Steel: 2000
+    Silver: 500
+    CopperList: 500
+  result: FactoryGoalpadCircuitboard
+
+- type: latheRecipe
+  id: AssemblyFabCircuitboardRecipe
+  name: Плата сборкафаба
+  categories:
+  - FactoryCircuits
+  materials:
+    Glass: 1200
+    Steel: 2500
+    Silver: 1000
+    CopperList: 500
+  result: AssemblyFabCircuitboard

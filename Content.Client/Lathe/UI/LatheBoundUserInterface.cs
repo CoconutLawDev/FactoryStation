@@ -10,6 +10,7 @@ namespace Content.Client.Lathe.UI
     {
         [ViewVariables]
         private LatheMenu? _menu;
+
         public LatheBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
         {
         }
@@ -35,12 +36,11 @@ namespace Content.Client.Lathe.UI
             _menu.QueueMoveDownAction += index => SendMessage(new LatheMoveRequestMessage(index, 1));
             _menu.DeleteFabricatingAction += () => SendMessage(new LatheAbortFabricationMessage());
 
-            // FactoryStation-Edit-Start: Кнопка вечного рецепта
+            // FactoryStation-Edit: Вечный рецепт
             _menu.EternalRecipeAction += eternal =>
             {
                 SendMessage(new LatheSetEternalRecipeMessage(eternal));
             };
-            // FactoryStation-Edit-End
         }
 
         protected override void UpdateState(BoundUserInterfaceState state)
@@ -56,6 +56,8 @@ namespace Content.Client.Lathe.UI
                     _menu?.UpdateCategories();
                     _menu?.PopulateQueueList(msg.Queue);
                     _menu?.SetQueueInfo(msg.CurrentlyProducing);
+                    // FactoryStation-Edit: Температура
+                    _menu?.UpdateHeatInfo(msg.CurrentHeat, msg.DangerThreshold, msg.CriticalThreshold);
                     break;
             }
         }

@@ -1,0 +1,756 @@
+# ======================================================================
+# Лёгкие цели (50 единиц)
+# ======================================================================
+
+- type: factoryGoal
+  id: LightIronIngot
+  name: "Лёгкая цель: Железные слитки"
+  difficulty: Light
+  requiredItem: IngotIronSheet1
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightGlass
+  name: "Лёгкая цель: Стекло"
+  difficulty: Light
+  requiredItem: SheetGlass1
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightCopperIngot
+  name: "Лёгкая цель: Медные слитки"
+  difficulty: Light
+  requiredItem: IngotCopperSheet1
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightSteel
+  name: "Лёгкая цель: Стальные листы"
+  difficulty: Light
+  requiredItem: SheetSteel1
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightPlasteel
+  name: "Лёгкая цель: Пласталевые листы"
+  difficulty: Light
+  requiredItem: SheetPlasteel1
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightPlastic
+  name: "Лёгкая цель: Пластиковые листы"
+  difficulty: Light
+  requiredItem: SheetPlastic1
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightWood
+  name: "Лёгкая цель: Деревянные доски"
+  difficulty: Light
+  requiredItem: MaterialWoodPlank1
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightCable
+  name: "Лёгкая цель: Мотки проводов"
+  difficulty: Light
+  requiredItem: CableApcStack1
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightSandstone
+  name: "Лёгкая цель: Песчаниковые блоки"
+  difficulty: Light
+  requiredItem: SheetSandstoneFact1
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightFloorTileSteel
+  name: "Лёгкая цель: Стальные плитки пола"
+  difficulty: Light
+  requiredItem: FloorTileItemSteel
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightLightBulb
+  name: "Лёгкая цель: Лампы накаливания"
+  difficulty: Light
+  requiredItem: LightBulb
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightLightTube
+  name: "Лёгкая цель: Флуоресцентные лампы"
+  difficulty: Light
+  requiredItem: LightTube
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightBucket
+  name: "Лёгкая цель: Вёдра"
+  difficulty: Light
+  requiredItem: Bucket
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightBeaker
+  name: "Лёгкая цель: Мензурки"
+  difficulty: Light
+  requiredItem: Beaker
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightScrewdriver
+  name: "Лёгкая цель: Отвёртки"
+  difficulty: Light
+  requiredItem: Screwdriver
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightWrench
+  name: "Лёгкая цель: Гаечные ключи"
+  difficulty: Light
+  requiredItem: Wrench
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightCrowbar
+  name: "Лёгкая цель: Монтировки"
+  difficulty: Light
+  requiredItem: CrowbarGreen
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+# --- Лёгкие печатные платы ---
+- type: factoryGoal
+  id: LightCircuitImprinter
+  name: "Лёгкая цель: Платы принтера плат"
+  difficulty: Light
+  requiredItem: CircuitImprinterMachineCircuitboard
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightAutolathe
+  name: "Лёгкая цель: Платы автолата"
+  difficulty: Light
+  requiredItem: AutolatheMachineCircuitboard
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightCellRecharger
+  name: "Лёгкая цель: Платы зарядников батарей"
+  difficulty: Light
+  requiredItem: CellRechargerCircuitboard
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightMicrowave
+  name: "Лёгкая цель: Платы микроволновок"
+  difficulty: Light
+  requiredItem: MicrowaveMachineCircuitboard
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightSmartFridge
+  name: "Лёгкая цель: Платы Смарт-Холодильников"
+  difficulty: Light
+  requiredItem: SmartFridgeCircuitboard
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightSpaceHeater
+  name: "Лёгкая цель: Платы обогревателей"
+  difficulty: Light
+  requiredItem: SpaceHeaterMachineCircuitBoard
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightBorgCharger
+  name: "Лёгкая цель: Платы зарядных станций киборгов"
+  difficulty: Light
+  requiredItem: BorgChargerCircuitboard
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightReagentGrinder
+  name: "Лёгкая цель: Платы измельчителей реагентов"
+  difficulty: Light
+  requiredItem: ReagentGrinderMachineCircuitboard
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+# --- Лёгкие батарейки ---
+- type: factoryGoal
+  id: LightPowerCellSmall
+  name: "Лёгкая цель: Маленькие батарейки"
+  difficulty: Light
+  requiredItem: PowerCellSmallPrinted
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightPowerCageSmall
+  name: "Лёгкая цель: Маленькие энергоклетки"
+  difficulty: Light
+  requiredItem: PowerCageSmall
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+# --- Лёгкая одежда и ковры ---
+- type: factoryGoal
+  id: LightJumpsuitGrey
+  name: "Лёгкая цель: Серые комбинезоны"
+  difficulty: Light
+  requiredItem: ClothingUniformJumpsuitColorGrey
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightJumpsuitCargo
+  name: "Лёгкая цель: Комбинезоны карго"
+  difficulty: Light
+  requiredItem: ClothingUniformJumpsuitCargo
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightJumpsuitMedical
+  name: "Лёгкая цель: Комбинезоны медиков"
+  difficulty: Light
+  requiredItem: ClothingUniformJumpsuitMedicalDoctor
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightJumpsuitEngineering
+  name: "Лёгкая цель: Комбинезоны инженеров"
+  difficulty: Light
+  requiredItem: ClothingUniformJumpsuitEngineering
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightJumpsuitScience
+  name: "Лёгкая цель: Комбинезоны учёных"
+  difficulty: Light
+  requiredItem: ClothingUniformJumpsuitScientist
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightJumpsuitSecurity
+  name: "Лёгкая цель: Комбинезоны СБ"
+  difficulty: Light
+  requiredItem: ClothingUniformJumpsuitSec
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightCarpetRed
+  name: "Лёгкая цель: Красный ковёр"
+  difficulty: Light
+  requiredItem: FloorCarpetItemRed
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightCarpetBlue
+  name: "Лёгкая цель: Синий ковёр"
+  difficulty: Light
+  requiredItem: FloorCarpetItemBlue
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: LightCarpetBlack
+  name: "Лёгкая цель: Чёрный ковёр"
+  difficulty: Light
+  requiredItem: FloorCarpetItemBlack
+  requiredAmount: 50
+  rewardMessage: "ЦентКом благодарит за выполнение лёгкой цели. Награда переведена на счета."
+
+# ======================================================================
+# Средние цели (100 единиц)
+# ======================================================================
+
+- type: factoryGoal
+  id: MediumCrystal
+  name: "Средняя цель: Обработанные кристаллы"
+  difficulty: Medium
+  requiredItem: IngotCrystalSheet1
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumSilver
+  name: "Средняя цель: Серебряные слитки"
+  difficulty: Medium
+  requiredItem: IngotSilver1
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumGold
+  name: "Средняя цель: Золотые слитки"
+  difficulty: Medium
+  requiredItem: IngotGold1
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumPlasma
+  name: "Средняя цель: Плазменные листы"
+  difficulty: Medium
+  requiredItem: SheetPlasma1
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumUranium
+  name: "Средняя цель: Урановые листы"
+  difficulty: Medium
+  requiredItem: SheetUranium1
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumPlasmaGlass
+  name: "Средняя цель: Плазменное стекло"
+  difficulty: Medium
+  requiredItem: SheetPlasmaGlass1
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumRPGlass
+  name: "Средняя цель: Бронированное стекло"
+  difficulty: Medium
+  requiredItem: SheetRPGlass1
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumPowerCell
+  name: "Средняя цель: Батарейки (заряженные)"
+  difficulty: Medium
+  requiredItem: PowerCellSmall
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumHandcuffs
+  name: "Средняя цель: Наручники"
+  difficulty: Medium
+  requiredItem: Handcuffs
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumWelder
+  name: "Средняя цель: Сварочные аппараты"
+  difficulty: Medium
+  requiredItem: Welder
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumMultitool
+  name: "Средняя цель: Мультитулы"
+  difficulty: Medium
+  requiredItem: Multitool
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+# --- Средние печатные платы ---
+- type: factoryGoal
+  id: MediumProtolathe
+  name: "Средняя цель: Платы протолатов"
+  difficulty: Medium
+  requiredItem: ProtolatheMachineCircuitboard
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumExosuitFabricator
+  name: "Средняя цель: Платы фабрикаторов экзокостюмов"
+  difficulty: Medium
+  requiredItem: ExosuitFabricatorMachineCircuitboard
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumSecurityTechFab
+  name: "Средняя цель: Платы техфабов СБ"
+  difficulty: Medium
+  requiredItem: SecurityTechFabCircuitboard
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumMedicalTechFab
+  name: "Средняя цель: Платы медтехфабов"
+  difficulty: Medium
+  requiredItem: MedicalTechFabCircuitboard
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumSMES
+  name: "Средняя цель: Платы СМЭС"
+  difficulty: Medium
+  requiredItem: SMESMachineCircuitboard
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumSubstation
+  name: "Средняя цель: Платы подстанций"
+  difficulty: Medium
+  requiredItem: SubstationMachineCircuitboard
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumCargoTelepad
+  name: "Средняя цель: Платы грузовых телепадов"
+  difficulty: Medium
+  requiredItem: CargoTelepadMachineCircuitboard
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumChemMaster
+  name: "Средняя цель: Платы ХимМастер 4000"
+  difficulty: Medium
+  requiredItem: ChemMasterMachineCircuitboard
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumBoozeDispenser
+  name: "Средняя цель: Платы раздатчиков алкоголя"
+  difficulty: Medium
+  requiredItem: BoozeDispenserMachineCircuitboard
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+# --- Средние батарейки и клетки ---
+- type: factoryGoal
+  id: MediumPowerCellMedium
+  name: "Средняя цель: Средние батарейки"
+  difficulty: Medium
+  requiredItem: PowerCellMediumPrinted
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumPowerCageMedium
+  name: "Средняя цель: Средние энергоклетки"
+  difficulty: Medium
+  requiredItem: PowerCageMedium
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+# --- Среднее оружие и броня ---
+- type: factoryGoal
+  id: MediumRiotShield
+  name: "Средняя цель: Противопультные щиты"
+  difficulty: Medium
+  requiredItem: RiotShield
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumStunbaton
+  name: "Средняя цель: Станбатоны"
+  difficulty: Medium
+  requiredItem: Stunbaton
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumDisabler
+  name: "Средняя цель: Дизейблеры"
+  difficulty: Medium
+  requiredItem: WeaponDisabler
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumLaserCarbine
+  name: "Средняя цель: Лазерные карабины"
+  difficulty: Medium
+  requiredItem: WeaponLaserCarbine
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumFlash
+  name: "Средняя цель: Флешеры"
+  difficulty: Medium
+  requiredItem: Flash
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumWinterCoat
+  name: "Средняя цель: Зимние куртки"
+  difficulty: Medium
+  requiredItem: ClothingOuterWinterCoat
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+- type: factoryGoal
+  id: MediumHudSecurity
+  name: "Средняя цель: Защитные очки СБ"
+  difficulty: Medium
+  requiredItem: ClothingEyesHudSecurity
+  requiredAmount: 100
+  rewardMessage: "ЦентКом благодарит за выполнение средней цели. Награда переведена на счета."
+
+# ======================================================================
+# Сложные цели (200 единиц)
+# ======================================================================
+
+- type: factoryGoal
+  id: HardAlloy
+  name: "Сложная цель: Синтез-гель"
+  difficulty: Hard
+  requiredItem: SlimeGelSheet1
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardCoal
+  name: "Сложная цель: Упакованный уголь"
+  difficulty: Hard
+  requiredItem: IngotCoalSheet1
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardMedkit
+  name: "Сложная цель: Аптечки"
+  difficulty: Hard
+  requiredItem: Medkit
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardDefibrillator
+  name: "Сложная цель: Дефибрилляторы"
+  difficulty: Hard
+  requiredItem: DefibrillatorEmpty
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardTaser
+  name: "Сложная цель: Тазеры"
+  difficulty: Hard
+  requiredItem: WeaponTaser
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardDisabler
+  name: "Сложная цель: Дизейблеры"
+  difficulty: Hard
+  requiredItem: WeaponDisabler
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+# --- Сложные печатные платы ---
+- type: factoryGoal
+  id: HardAutolatheHyperConvection
+  name: "Сложная цель: Платы гиперконвекционных автолатов"
+  difficulty: Hard
+  requiredItem: AutolatheHyperConvectionMachineCircuitboard
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardProtolatheHyperConvection
+  name: "Сложная цель: Платы гиперконвекционных протолатов"
+  difficulty: Hard
+  requiredItem: ProtolatheHyperConvectionMachineCircuitboard
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardCircuitImprinterHyperConvection
+  name: "Сложная цель: Платы гиперконвекционных принтеров плат"
+  difficulty: Hard
+  requiredItem: CircuitImprinterHyperConvectionMachineCircuitboard
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardHellfireFreezer
+  name: "Сложная цель: Платы адских морозильников"
+  difficulty: Hard
+  requiredItem: HellfireFreezerMachineCircuitBoard
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardHellfireHeater
+  name: "Сложная цель: Платы адских нагревателей"
+  difficulty: Hard
+  requiredItem: HellfireHeaterMachineCircuitBoard
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardMiniGravityGenerator
+  name: "Сложная цель: Платы мини-генераторов гравитации"
+  difficulty: Hard
+  requiredItem: MiniGravityGeneratorCircuitboard
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardCryoPod
+  name: "Сложная цель: Платы криокапсул"
+  difficulty: Hard
+  requiredItem: CryoPodMachineCircuitboard
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardCloningPod
+  name: "Сложная цель: Платы капсул клонирования"
+  difficulty: Hard
+  requiredItem: CloningPodMachineCircuitboard
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardOreProcessorIndustrial
+  name: "Сложная цель: Платы промышленных переработчиков руды"
+  difficulty: Hard
+  requiredItem: OreProcessorIndustrialMachineCircuitboard
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+# --- Сложные батарейки и клетки ---
+- type: factoryGoal
+  id: HardPowerCellHigh
+  name: "Сложная цель: Высокомощные батарейки"
+  difficulty: Hard
+  requiredItem: PowerCellHighPrinted
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardPowerCellHyper
+  name: "Сложная цель: Гипербатарейки"
+  difficulty: Hard
+  requiredItem: PowerCellHyperPrinted
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardPowerCellMicroreactor
+  name: "Сложная цель: Микрореакторные батарейки"
+  difficulty: Hard
+  requiredItem: PowerCellMicroreactorPrinted
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardPowerCageHigh
+  name: "Сложная цель: Высокомощные энергоклетки"
+  difficulty: Hard
+  requiredItem: PowerCageHigh
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+# --- Сложное оружие и снаряжение ---
+- type: factoryGoal
+  id: HardLaserCannon
+  name: "Сложная цель: Лазерные пушки"
+  difficulty: Hard
+  requiredItem: WeaponLaserCannon
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardXrayCannon
+  name: "Сложная цель: Рентгеновские пушки"
+  difficulty: Hard
+  requiredItem: WeaponXrayCannon
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardAdvancedLaser
+  name: "Сложная цель: Продвинутые лазеры"
+  difficulty: Hard
+  requiredItem: WeaponAdvancedLaser
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardSvalinnLaser
+  name: "Сложная цель: Лазерные пистолеты Свалин"
+  difficulty: Hard
+  requiredItem: WeaponLaserSvalinn
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardTemperatureGun
+  name: "Сложная цель: Температурные пушки"
+  difficulty: Hard
+  requiredItem: WeaponTemperatureGun
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardTelescopicShield
+  name: "Сложная цель: Телескопические щиты"
+  difficulty: Hard
+  requiredItem: TelescopicShield
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardElectropack
+  name: "Сложная цель: Электро-рюкзаки"
+  difficulty: Hard
+  requiredItem: ClothingBackpackElectropack
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."
+
+- type: factoryGoal
+  id: HardPortableRecharger
+  name: "Сложная цель: Портативные перезарядчики"
+  difficulty: Hard
+  requiredItem: PortableRecharger
+  requiredAmount: 200
+  rewardMessage: "ЦентКом выражает особую благодарность за выполнение сложной цели. Значительная награда переведена на счета."

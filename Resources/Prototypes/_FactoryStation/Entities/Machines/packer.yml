@@ -1,0 +1,34 @@
+- type: entity
+  id: Packer711
+  parent: BaseLatheLube
+  name: Промышленный упаковщик материалов 711
+  description: "Промышленный упаковщик материалов 711 используется для упаковки материалов. Он может обрабатывать большие объемы материалов, что делает его незаменимым в производственных процессах."
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Machines/packer.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+  - type: Machine
+    board: PackerMachineCircuitboard711
+  - type: MaterialStorage
+    whitelist:
+      tags:
+        - Sheet
+        - RawMaterial
+        - Ingot
+      capacity: 500
+  - type: OreSiloClient
+  - type: Lathe
+    idleState: icon
+    runningState: burning
+    staticPacks:
+    - ToolsStatic
+  - type: ItemSlots
+    slots:
+      heat_sink:
+        name: Радиаторная пластина
+        whitelist:
+          components:
+          - HeatSink

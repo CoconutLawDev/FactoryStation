@@ -1,0 +1,107 @@
+- type: entity
+  id: SheetifierFactory3001
+  parent: BaseLatheLube
+  name: Лист-мастер 3001
+  description: "Лист-мастер 3001 используется для обработки материалов в листы. Он может обрабатывать большие объемы материалов, что делает его незаменимым в производственных процессах."
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Machines/sheetifier.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+  - type: Machine
+    board: SheetifierMachineCircuitboard3001
+  - type: MaterialStorage
+    whitelist:
+      tags:
+        - Sheet
+        - RawMaterial
+        - Ingot
+        - OreSandstoneFact
+      capacity: 250
+  - type: OreSiloClient
+  - type: Lathe
+    idleState: icon
+    runningState: burning
+    staticPacks:
+    - ToolsStatic
+  - type: ItemSlots
+    slots:
+      heat_sink:
+        name: Радиаторная пластина
+        whitelist:
+          components:
+          - HeatSink
+
+- type: entity
+  id: SheetifierFactory4001
+  parent: BaseLatheLube
+  name: Лист-мастер 4001
+  description: "Лист-мастер 4001 используется для обработки материалов в листы. Он может обрабатывать большие объемы материалов, что делает его незаменимым в производственных процессах."
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Machines/sheetifier2.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+  - type: Machine
+    board: SheetifierMachineCircuitboard4001
+  - type: MaterialStorage
+    whitelist:
+      tags:
+        - Sheet
+        - RawMaterial
+        - Ingot
+        - OreSandstoneFact
+      capacity: 250
+  - type: OreSiloClient
+  - type: Lathe
+    idleState: icon
+    runningState: burning
+    staticPacks:
+    - ToolsStatic
+  - type: ItemSlots
+    slots:
+      heat_sink:
+        name: Радиаторная пластина
+        whitelist:
+          components:
+          - HeatSink
+
+- type: entity
+  id: SheetifierFactory5001
+  parent: BaseLatheLube
+  name: Лист-мастер 5001
+  description: "Лист-мастер 5001 используется для обработки материалов в листы. Он может обрабатывать большие объемы материалов, что делает его незаменимым в производственных процессах."
+  components:
+  - type: Sprite
+    sprite: _FactoryStation/Machines/sheetifier3.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+  - type: Machine
+    board: SheetifierMachineCircuitboard5001
+  - type: MaterialStorage
+    whitelist:
+      tags:
+        - Sheet
+        - RawMaterial
+        - Ingot
+        - OreSandstoneFact
+      capacity: 500
+  - type: OreSiloClient
+  - type: Lathe
+    idleState: icon
+    runningState: burning
+    staticPacks:
+    - ToolsStatic
+  - type: ItemSlots
+    slots:
+      heat_sink:
+        name: Радиаторная пластина
+        whitelist:
+          components:
+          - HeatSink

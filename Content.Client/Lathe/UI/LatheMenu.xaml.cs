@@ -11,6 +11,7 @@ using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
 namespace Content.Client.Lathe.UI;
@@ -32,17 +33,18 @@ public sealed partial class LatheMenu : FancyWindow
     public event Action<int>? QueueMoveDownAction;
     public event Action? DeleteFabricatingAction;
 
-    // FactoryStation-Edit-Start: Событие для вечного рецепта
+    // FactoryStation-Edit: Вечный рецепт
     public event Action<bool>? EternalRecipeAction;
-    // FactoryStation-Edit-End
 
     public List<ProtoId<LatheRecipePrototype>> Recipes = new();
-
     public List<ProtoId<LatheCategoryPrototype>>? Categories;
-
     public ProtoId<LatheCategoryPrototype>? CurrentCategory;
-
     public EntityUid Entity;
+
+    // FactoryStation-Edit: Температура
+    private float _currentHeat;
+    private float _dangerThreshold = 700f;
+    private float _criticalThreshold = 1100f;
 
     public LatheMenu()
     {
@@ -53,10 +55,7 @@ public sealed partial class LatheMenu : FancyWindow
         _lathe = _entityManager.System<LatheSystem>();
         _materialStorage = _entityManager.System<MaterialStorageSystem>();
 
-        SearchBar.OnTextChanged += _ =>
-        {
-            PopulateRecipes();
-        };
+        SearchBar.OnTextChanged += _ => PopulateRecipes();
         AmountLineEdit.OnTextChanged += _ =>
         {
             if (int.TryParse(AmountLineEdit.Text, out var amount))
@@ -66,21 +65,18 @@ public sealed partial class LatheMenu : FancyWindow
                 else if (amount < 0)
                     AmountLineEdit.Text = "0";
             }
-
             PopulateRecipes();
         };
 
         FilterOption.OnItemSelected += OnItemSelected;
-
         ServerListButton.OnPressed += a => OnServerListButtonPressed?.Invoke(a);
         DeleteFabricating.OnPressed += _ => DeleteFabricatingAction?.Invoke();
 
-        // FactoryStation-Edit-Start: Обработчик кнопки вечного рецепта
+        // FactoryStation-Edit: Кнопка вечного рецепта
         EternalRecipeButton.OnToggled += args =>
         {
             EternalRecipeAction?.Invoke(args.Pressed);
         };
-        // FactoryStation-Edit-End
     }
 
     public void SetEntity(EntityUid uid)
@@ -91,22 +87,56 @@ public sealed partial class LatheMenu : FancyWindow
         if (_entityManager.TryGetComponent<LatheComponent>(Entity, out var latheComponent))
         {
             if (!latheComponent.DynamicPacks.Any())
-            {
                 ServerListButton.Visible = false;
-            }
 
             AmountLineEdit.SetText(latheComponent.DefaultProductionAmount.ToString());
-
-            // FactoryStation-Edit: Синхронизация кнопки с EternalMode
+            // FactoryStation-Edit: Синхронизация кнопки
             EternalRecipeButton.Pressed = latheComponent.EternalMode;
         }
 
         MaterialsList.SetOwner(Entity);
     }
 
-    /// <summary>
-    /// Populates the list of all the recipes
-    /// </summary>
+    // FactoryStation-Edit: Обновление температуры каждый кадр
+    protected override void FrameUpdate(FrameEventArgs args)
+    {
+        base.FrameUpdate(args);
+        if (Entity is not { Valid: true })
+            return;
+        UpdateTemperatureDisplay();
+    }
+
+    public void UpdateHeatInfo(float currentHeat, float dangerThreshold, float criticalThreshold)
+    {
+        _currentHeat = currentHeat;
+        _dangerThreshold = dangerThreshold;
+        _criticalThreshold = criticalThreshold;
+    }
+
+    private void UpdateTemperatureDisplay()
+    {
+        HeatInfoContainer.Visible = true;
+        TemperatureLabel.Text = $"{_currentHeat:F0}°C";
+
+        if (_currentHeat >= _criticalThreshold)
+        {
+            TemperatureLabel.FontColorOverride = Color.Red;
+            HeatWarningLabel.Visible = true;
+            HeatWarningLabel.Text = "!!! КРИТИЧЕСКИЙ ПЕРЕГРЕВ !!!";
+        }
+        else if (_currentHeat >= _dangerThreshold)
+        {
+            TemperatureLabel.FontColorOverride = Color.Orange;
+            HeatWarningLabel.Visible = true;
+            HeatWarningLabel.Text = "⚠ Опасная температура";
+        }
+        else
+        {
+            TemperatureLabel.FontColorOverride = Color.White;
+            HeatWarningLabel.Visible = false;
+        }
+    }
+
     public void PopulateRecipes()
     {
         var recipesToShow = new List<LatheRecipePrototype>();
@@ -114,38 +144,28 @@ public sealed partial class LatheMenu : FancyWindow
         {
             if (!_prototypeManager.Resolve(recipe, out var proto))
                 continue;
-
-            // Category filtering
             if (CurrentCategory != null)
             {
                 if (proto.Categories.Count <= 0)
                     continue;
-
                 var validRecipe = proto.Categories.Any(category => category == CurrentCategory);
-
                 if (!validRecipe)
                     continue;
             }
-
             if (SearchBar.Text.Trim().Length != 0)
             {
                 if (_lathe.GetRecipeName(recipe).ToLowerInvariant().Contains(SearchBar.Text.Trim().ToLowerInvariant()))
                     recipesToShow.Add(proto);
             }
             else
-            {
                 recipesToShow.Add(proto);
-            }
         }
 
         if (!int.TryParse(AmountLineEdit.Text, out var quantity) || quantity <= 0)
             quantity = 1;
 
         RecipeCount.Text = Loc.GetString("lathe-menu-recipe-count", ("count", recipesToShow.Count));
-
         var sortedRecipesToShow = recipesToShow.OrderBy(_lathe.GetRecipeName);
-
-        // Get the existing list of queue controls
         var oldChildCount = RecipeList.ChildCount;
         _entityManager.TryGetComponent(Entity, out LatheComponent? lathe);
 
@@ -169,13 +189,11 @@ public sealed partial class LatheMenu : FancyWindow
             else
             {
                 var child = RecipeList.GetChild(idx) as RecipeControl;
-
                 if (child == null)
                 {
-                    DebugTools.Assert($"Lathe menu recipe control at {idx} is not of type RecipeControl"); // Something's gone terribly wrong.
+                    DebugTools.Assert($"Lathe menu recipe control at {idx} is not of type RecipeControl");
                     continue;
                 }
-
                 child.SetRecipe(prototype);
                 child.SetTooltipSupplier(tooltipFunction);
                 child.SetCanProduce(canProduce);
@@ -184,120 +202,86 @@ public sealed partial class LatheMenu : FancyWindow
             idx++;
         }
 
-        // Shrink list if new list is shorter than old list.
         for (var childIdx = oldChildCount - 1; idx <= childIdx; childIdx--)
-        {
             RecipeList.RemoveChild(childIdx);
-        }
     }
 
     private string GenerateTooltipText(LatheRecipePrototype prototype)
     {
         StringBuilder sb = new();
         var multiplier = _entityManager.GetComponent<LatheComponent>(Entity).MaterialUseMultiplier;
-
         foreach (var (id, amount) in prototype.Materials)
         {
             if (!_prototypeManager.Resolve(id, out var proto))
                 continue;
-
             var adjustedAmount = SharedLatheSystem.AdjustMaterial(amount, prototype.ApplyMaterialDiscount, multiplier);
             var sheetVolume = _materialStorage.GetSheetVolume(proto);
-
             var unit = Loc.GetString(proto.Unit);
             var sheets = adjustedAmount / (float)sheetVolume;
-
             var availableAmount = _materialStorage.GetMaterialAmount(Entity, id);
             var missingAmount = Math.Max(0, adjustedAmount - availableAmount);
             var missingSheets = missingAmount / (float)sheetVolume;
-
             var name = Loc.GetString(proto.Name);
-
             string tooltipText;
             if (missingSheets > 0)
-            {
                 tooltipText = Loc.GetString("lathe-menu-material-amount-missing", ("amount", sheets), ("missingAmount", missingSheets), ("unit", unit), ("material", name));
-            }
             else
             {
                 var amountText = Loc.GetString("lathe-menu-material-amount", ("amount", sheets), ("unit", unit));
                 tooltipText = Loc.GetString("lathe-menu-tooltip-display", ("material", name), ("amount", amountText));
             }
-
             sb.AppendLine(tooltipText);
         }
-
         var desc = _lathe.GetRecipeDescription(prototype);
         if (!string.IsNullOrWhiteSpace(desc))
             sb.AppendLine(Loc.GetString("lathe-menu-description-display", ("description", desc)));
-
-        // Remove last newline
         if (sb.Length > 0)
             sb.Remove(sb.Length - 1, 1);
-
         return sb.ToString();
     }
 
     public void UpdateCategories()
     {
-        // Get categories from recipes
         var currentCategories = new List<ProtoId<LatheCategoryPrototype>>();
         foreach (var recipeId in Recipes)
         {
             var recipe = _prototypeManager.Index(recipeId);
-
             if (recipe.Categories.Count <= 0)
                 continue;
-
             foreach (var category in recipe.Categories)
             {
                 if (currentCategories.Contains(category))
                     continue;
-
                 currentCategories.Add(category);
             }
         }
-
         if (Categories != null && (Categories.Count == currentCategories.Count || !Categories.All(currentCategories.Contains)))
             return;
-
         Categories = currentCategories;
         var sortedCategories = currentCategories
             .Select(p => _prototypeManager.Index(p))
             .OrderBy(p => Loc.GetString(p.Name))
             .ToList();
-
         FilterOption.Clear();
         FilterOption.AddItem(Loc.GetString("lathe-menu-category-all"), -1);
         foreach (var category in sortedCategories)
-        {
             FilterOption.AddItem(Loc.GetString(category.Name), Categories.IndexOf(category.ID));
-        }
-
         FilterOption.SelectId(-1);
     }
 
-    /// <summary>
-    /// Populates the build queue list with all queued items
-    /// </summary>
-    /// <param name="queue"></param>
     public void PopulateQueueList(IReadOnlyCollection<LatheRecipeBatch> queue)
     {
-        // Get the existing list of queue controls
         var oldChildCount = QueueList.ChildCount;
-
         var idx = 0;
         foreach (var batch in queue)
         {
             var recipe = _prototypeManager.Index(batch.Recipe);
-
             var itemName = _lathe.GetRecipeName(batch.Recipe);
             string displayText;
             if (batch.ItemsRequested > 1)
                 displayText = Loc.GetString("lathe-menu-item-batch", ("index", idx + 1), ("name", itemName), ("printed", batch.ItemsPrinted), ("total", batch.ItemsRequested));
             else
                 displayText = Loc.GetString("lathe-menu-item-single", ("index", idx + 1), ("name", itemName));
-
             if (idx >= oldChildCount)
             {
                 var queuedRecipeBox = new QueuedRecipeControl(displayText, idx, GetRecipeDisplayControl(recipe));
@@ -309,25 +293,19 @@ public sealed partial class LatheMenu : FancyWindow
             else
             {
                 var child = QueueList.GetChild(idx) as QueuedRecipeControl;
-
                 if (child == null)
                 {
-                    DebugTools.Assert($"Lathe menu queued recipe control at {idx} is not of type QueuedRecipeControl"); // Something's gone terribly wrong.
+                    DebugTools.Assert($"Lathe menu queued recipe control at {idx} is not of type QueuedRecipeControl");
                     continue;
                 }
-
                 child.SetDisplayText(displayText);
                 child.SetIndex(idx);
                 child.SetDisplayControl(GetRecipeDisplayControl(recipe));
             }
             idx++;
         }
-
-        // Shrink list if new list is shorter than old list.
         for (var childIdx = oldChildCount - 1; idx <= childIdx; childIdx--)
-        {
             QueueList.RemoveChild(childIdx);
-        }
     }
 
     public void SetQueueInfo(ProtoId<LatheRecipePrototype>? recipeProto)
@@ -335,12 +313,9 @@ public sealed partial class LatheMenu : FancyWindow
         FabricatingContainer.Visible = recipeProto != null;
         if (recipeProto == null)
             return;
-
         var recipe = _prototypeManager.Index(recipeProto.Value);
-
         FabricatingDisplayContainer.Children.Clear();
         FabricatingDisplayContainer.AddChild(GetRecipeDisplayControl(recipe));
-
         NameLabel.Text = _lathe.GetRecipeName(recipe);
     }
 
@@ -352,14 +327,12 @@ public sealed partial class LatheMenu : FancyWindow
             textRect.Texture = _spriteSystem.Frame0(recipe.Icon);
             return textRect;
         }
-
         if (recipe.Result is { } result)
         {
             var entProtoView = new EntityPrototypeView();
             entProtoView.SetPrototype(result);
             return entProtoView;
         }
-
         return new Control();
     }
 
@@ -367,13 +340,9 @@ public sealed partial class LatheMenu : FancyWindow
     {
         FilterOption.SelectId(obj.Id);
         if (obj.Id == -1)
-        {
             CurrentCategory = null;
-        }
         else
-        {
             CurrentCategory = Categories?[obj.Id];
-        }
         PopulateRecipes();
     }
 }
